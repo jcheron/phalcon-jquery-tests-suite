@@ -1098,5 +1098,48 @@
             "testing",
             "xunit"
         ]
+    },
+    {
+        "name": "facebook/webdriver",
+        "version": "dev-master",
+        "version_normalized": "9999999-dev",
+        "source": {
+            "type": "git",
+            "url": "https://github.com/facebook/php-webdriver.git",
+            "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5"
+        },
+        "dist": {
+            "type": "zip",
+            "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
+            "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
+            "shasum": ""
+        },
+        "require": {
+            "php": ">=5.3.19"
+        },
+        "require-dev": {
+            "phpdocumentor/phpdocumentor": "2.*",
+            "phpunit/phpunit": "3.7.*"
+        },
+        "time": "2015-02-09 19:39:34",
+        "type": "library",
+        "installation-source": "dist",
+        "autoload": {
+            "classmap": [
+                "lib/"
+            ]
+        },
+        "notification-url": "https://packagist.org/downloads/",
+        "license": [
+            "Apache-2.0"
+        ],
+        "description": "A php client for WebDriver",
+        "homepage": "https://github.com/facebook/php-webdriver",
+        "keywords": [
+            "facebook",
+            "php",
+            "selenium",
+            "webdriver"
+        ]
     }
 ]

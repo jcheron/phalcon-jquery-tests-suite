@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "ea79df16cbb69dc19abb84d0475a1068",
+    "hash": "53e30ae597beef2388b2dbe434cd2b18",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -1067,10 +1067,54 @@
             "time": "2015-03-30 15:54:10"
         }
     ],
-    "packages-dev": [],
+    "packages-dev": [
+        {
+            "name": "facebook/webdriver",
+            "version": "dev-master",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/facebook/php-webdriver.git",
+                "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/facebook/php-webdriver/zipball/2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
+                "reference": "2c5b305ea91b00ebbc433ad1663b7f16c1b31ec5",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.19"
+            },
+            "require-dev": {
+                "phpdocumentor/phpdocumentor": "2.*",
+                "phpunit/phpunit": "3.7.*"
+            },
+            "type": "library",
+            "autoload": {
+                "classmap": [
+                    "lib/"
+                ]
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "Apache-2.0"
+            ],
+            "description": "A php client for WebDriver",
+            "homepage": "https://github.com/facebook/php-webdriver",
+            "keywords": [
+                "facebook",
+                "php",
+                "selenium",
+                "webdriver"
+            ],
+            "time": "2015-02-09 19:39:34"
+        }
+    ],
     "aliases": [],
     "minimum-stability": "stable",
-    "stability-flags": [],
+    "stability-flags": {
+        "facebook/webdriver": 20
+    },
     "prefer-stable": false,
     "prefer-lowest": false,
     "platform": [],

@@ -9,6 +9,9 @@ define('ROOT_PATH', __DIR__);
 define('PATH_LIBRARY', __DIR__ . '/../app/library/');
 define('PATH_SERVICES', __DIR__ . '/../app/services/');
 define('PATH_RESOURCES', __DIR__ . '/../app/resources/');
+define('PATH_VIEWS', __DIR__ . '/../app/views/');
+define('PATH_CONTROLLERS', __DIR__ . '/../app/controllers/');
+
 
 set_include_path(
 ROOT_PATH . PATH_SEPARATOR . get_include_path()
@@ -22,14 +25,7 @@ include __DIR__ . "/../vendor/autoload.php";
 $loader = new \Phalcon\Loader();
 
 $loader->registerDirs(array(
-		ROOT_PATH
+		ROOT_PATH,PATH_LIBRARY,PATH_VIEWS,PATH_CONTROLLERS
 ));
 
 $loader->register();
-
-$di = new FactoryDefault();
-DI::reset();
-
-// add any needed services to the DI here
-
-DI::setDefault($di);

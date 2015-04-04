@@ -1,82 +1,88 @@
 <?php
-/**
- * UnitTestCase.php
- * Phalcon_Test_UnitTestCase
- *
- * Unit Test Helper
- *
- * PhalconPHP Framework
- *
- * @copyright (c) 2011-2012 Phalcon Team
- * @link      http://www.phalconphp.com
- * @author    Andres Gutierrez <andres@phalconphp.com>
- *
- * The contents of this file are subject to the New BSD License that is
- * bundled with this package in the file docs/LICENSE.txt
- *
- * If you did not receive a copy of the license and are unable to obtain it
- * through the world-wide-web, please send an email to license@phalconphp.com
- * so that we can send you a copy immediately.
- */
-namespace Phalcon\Test;
-use Phalcon\Config;
-abstract class UnitTestCase extends \PHPUnit_Framework_TestCase{
-    // Holds the configuration variables and other stuff
-    // I can use the DI container but for tests like the Translate
-    // we do not need the overhead
-    protected $config = array();
-    // The Di container
-    protected $di;
-    /**
-     * Sets the test up by loading the DI container and other stuff
-     *
-     * @author Nikos Dimopoulos <nikos@phalconphp.com>
-     * @since  2012-09-30
-     *
-     * @return \Phalcon\DI
-     */
-    protected function setUp()
-    {
-        $this->checkExtension('phalcon');
-        // Set the config up
-        $this->config = Config::init();
-        // Reset the DI container
-        \Phalcon\DI::reset();
-        // Instantiate a new DI container
-        $di = new \Phalcon\DI();
-        // Set the URL
-        $di->set(
-            'url',
-            function () {
-                $url = new \Phalcon\Mvc\Url();
-                $url->setBaseUri('/phalcon-jquery-tests-suite/');
-                return $url;
-            }
-        );
-        $di->set('jquery',function(){
-        	$jquery= new Ajax\JsUtils(array("driver"=>"Jquery"));
-        	$jquery->bootstrap(new Ajax\Bootstrap());//Optional for Twitter Bootstrap
+use Phalcon\DI,\Phalcon\Test\UnitTestCase as PhalconTestCase;
+use Phalcon\Mvc\View;
+use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
 
-        	return $jquery;
-        });
-        $di->set(
-            'escaper',
-            function () {
-                return new \Phalcon\Escaper();
-            }
-        );
-        $this->di = $di;
-    }
+
+abstract class UnitTestCase extends PhalconTestCase {
+
     /**
-     * Checks if a particular extension is loaded and if not it marks
-     * the tests skipped
-     *
-     * @param $extension
+     * @var \Voice\Cache
      */
-    public function checkExtension($extension)
-    {
-        if (!extension_loaded($extension)) {
-            $this->markTestSkipped("Warning: {$extension} extension is not loaded");
+    protected $_cache;
+
+    /**
+     * @var \Phalcon\Config
+     */
+    protected $_config;
+
+    /**
+     * @var bool
+     */
+    private $_loaded = false;
+
+    /**
+     * Default fixture for each test
+     */
+    public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
+        if(is_null($di)) {
+            $di = new Phalcon\DI\FactoryDefault();
+        }
+        // Load your additional dependencies and services here
+
+        // We should check the config state also
+        // We can put it into the DI also if we wanted to
+        if(is_null($config)) {
+            $this->_config = $config = include __DIR__ . "/../app/config/config.php";;
+        } else {
+            $this->_config = $config;
+        }
+
+        // Set it as default if anything else uses the DI::getDefault() static method
+        DI::setDefault($di);
+
+        $di->set('view', function () use ($config) {
+
+        	$view = new View();
+
+        	$view->setViewsDir($config->application->viewsDir);
+
+        	$view->registerEngines(array(
+        			'.volt' => function ($view, $di) use ($config) {
+
+        				$volt = new VoltEngine($view, $di);
+
+        				$volt->setOptions(array(
+        						'compiledPath' => $config->application->cacheDir,
+        						'compiledSeparator' => '_'
+        				));
+
+        				return $volt;
+        			},
+        			'.phtml' => 'Phalcon\Mvc\View\Engine\Php'
+        		));
+        	return $view;
+        }, true);
+
+        	$di->set('jquery',function(){
+        		$jquery= new Ajax\JsUtils(array("driver"=>"Jquery"));
+        		$jquery->bootstrap(new Ajax\Bootstrap());//Optional for Twitter Bootstrap
+        		return $jquery;
+        	});
+
+        // Pass it up the chain
+        parent::setUp($di, $this->_config);
+
+        $this->_loaded = true;
+    }
+
+    /**
+     * Check if the test case is setup properly
+     * @throws \PHPUnit_Framework_IncompleteTestError;
+     */
+    public function __destruct() {
+        if(!$this->_loaded) {
+            throw new \PHPUnit_Framework_IncompleteTestError('Please run parent::setUp().');
         }
     }
 }
