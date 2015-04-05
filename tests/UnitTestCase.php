@@ -1,4 +1,5 @@
 <?php
+namespace Test;
 use Phalcon\DI,\Phalcon\Test\UnitTestCase as PhalconTestCase;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
@@ -24,9 +25,9 @@ abstract class UnitTestCase extends PhalconTestCase {
     /**
      * Default fixture for each test
      */
-    public function setUp(Phalcon\DiInterface $di = NULL, Phalcon\Config $config = NULL) {
+    public function setUp(\Phalcon\DiInterface $di = NULL, \Phalcon\Config $config = NULL) {
         if(is_null($di)) {
-            $di = new Phalcon\DI\FactoryDefault();
+            $di = new \Phalcon\DI\FactoryDefault();
         }
         // Load your additional dependencies and services here
 
@@ -65,8 +66,8 @@ abstract class UnitTestCase extends PhalconTestCase {
         }, true);
 
         	$di->set('jquery',function(){
-        		$jquery= new Ajax\JsUtils(array("driver"=>"Jquery"));
-        		$jquery->bootstrap(new Ajax\Bootstrap());//Optional for Twitter Bootstrap
+        		$jquery= new \Ajax\JsUtils(array("driver"=>"Jquery"));
+        		$jquery->bootstrap(new \Ajax\Bootstrap());//Optional for Twitter Bootstrap
         		return $jquery;
         	});
 

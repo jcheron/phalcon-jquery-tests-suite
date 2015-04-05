@@ -6,10 +6,9 @@ class IndexController extends ControllerBase
 
     public function indexAction()
     {
-		$this->jquery->bootstrap()->htmlAlert("alert1","It works !",CssRef::CSS_SUCCESS);
-		$this->jquery->hide("#alert1",15000,'',true);
+		$alert=$this->jquery->bootstrap()->htmlAlert("alert1","It works !",CssRef::CSS_SUCCESS);
+		$alert->onClick($this->jquery->append('this',"<button id='newButton'>Button</button>"));
 		$this->jquery->compile($this->view);
     }
-
 }
 
