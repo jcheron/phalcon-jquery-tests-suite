@@ -1,17 +1,18 @@
 <?php
 
-namespace Test;
+namespace Tests\html;
 
 use Phalcon\DiInterface;
 use Phalcon\Config;
+use Tests\PhalconUnitTest;
 /**
  * Class UnitTest
  */
 class PhalconMainPageTest extends PhalconUnitTest {
 
-	public function testTestCase() {
+	public function testIndex() {
 		$content=$this->application->handle("index")->getContent();
-		$this->assertContains("alert1", $content,"Alert1 non trouvé");
+		$this->assertContains("Congratulations", $content,"index ok");
 
         $this->assertEquals('works',
             'works',

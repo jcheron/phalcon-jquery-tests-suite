@@ -1,37 +1,48 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
 /**
  * Class AjaxUnitTest
  */
-abstract class AjaxUnitTest extends \Test\UnitTestCase {
+abstract class AjaxUnitTest extends \Tests\UnitTestCase {
 	use \WebDriverAssertions;
 	use \WebDriverDevelop;
-	protected $url = 'http://127.0.0.1/phalcon-jquery-tests-suite/';
+	protected static $url = 'http://127.0.0.1/phalcon-jquery-tests-suite/';
 	/**
 	* @var \RemoteWebDriver
 	*/
-	protected $webDriver;
+	protected static $webDriver;
+
+
+	/* (non-PHPdoc)
+	 * @see PHPUnit_Framework_TestCase::setUpBeforeClass()
+	 */
+	public static function setUpBeforeClass() {
+		$capabilities = array(\WebDriverCapabilityType::BROWSER_NAME => 'chrome');
+		self::$webDriver = \RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
+	}
 
 	public function setUp(\Phalcon\DiInterface $di = NULL, \Phalcon\Config $config = NULL) {
 		parent::setup($di, $config);
-		$capabilities = array(\WebDriverCapabilityType::BROWSER_NAME => 'chrome');
-		$this->webDriver = \RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
 	}
-    public function tearDown()
-    {
-    	if($this->webDriver!=null)
-    		$this->webDriver->close();
-    }
+
+	/* (non-PHPdoc)
+	 * @see PHPUnit_Framework_TestCase::tearDownAfterClass()
+	 */
+	public static function tearDownAfterClass() {
+    	if(self::$webDriver!=null)
+    		self::$webDriver->close();
+	}
+
 
     /**
      * Loads the relative url $url in web browser
      * @param string $url
      */
-    public function get($url=""){
-   		$url=$this->url.$url;
-    	$this->webDriver->get($url);
+    public static function get($url=""){
+   		$url=self::$url.$url;
+    	self::$webDriver->get($url);
     }
 
     /**
@@ -40,6 +51,32 @@ abstract class AjaxUnitTest extends \Test\UnitTestCase {
      * @return RemoteWebElement
      */
     public function getElementById($id){
-    	return $this->webDriver->findElement(\WebDriverBy::id($id));
+    	return self::$webDriver->findElement(\WebDriverBy::id($id));
+    }
+
+    /**
+     * Returns a given element by css selector
+     * @param string $css_selector
+     * @return RemoteWebElement
+     */
+    public function getElementBySelector($css_selector){
+    	return self::$webDriver->findElement(\WebDriverBy::cssSelector($css_selector));
+    }
+
+    /**
+     * Returns the given elements by css selector
+     * @param string $css_selector
+     * @return RemoteWebElement
+     */
+    public function getElementsBySelector($css_selector){
+    	return self::$webDriver->findElements(\WebDriverBy::cssSelector($css_selector));
+    }
+
+    /**
+     * Return true if the actual page contains $text
+     * @param string $text The text to search for
+     */
+    public function assertPageContainsText($text){
+    	$this->assertContains($text, self::$webDriver->getPageSource());
     }
 }

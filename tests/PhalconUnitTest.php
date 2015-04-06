@@ -1,13 +1,13 @@
 <?php
 
-namespace Test;
+namespace Tests;
 
 use Phalcon\DiInterface;
 use Phalcon\Config;
 /**
  * Class PhalconUnitTest
  */
-abstract class PhalconUnitTest extends \Test\UnitTestCase {
+abstract class PhalconUnitTest extends \Tests\UnitTestCase {
 	protected $application;
 	public function setUp(\Phalcon\DiInterface $di = NULL, \Phalcon\Config $config = NULL) {
 		// You now have the option. You can leave out this setUp to use the defaults

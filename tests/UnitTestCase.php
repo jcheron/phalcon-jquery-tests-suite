@@ -1,5 +1,5 @@
 <?php
-namespace Test;
+namespace Tests;
 use Phalcon\DI,\Phalcon\Test\UnitTestCase as PhalconTestCase;
 use Phalcon\Mvc\View;
 use Phalcon\Mvc\View\Engine\Volt as VoltEngine;
