@@ -41,4 +41,11 @@ class UnitTest extends AjaxUnitTest {
 		$message=$this->getElementById('close-message');
 		$this->assertEquals($message->getText(), "Alert3 closed");
 	}
+
+	public function testAddAlertOnClick(){
+		$btn = $this->getElementById('btNewAlert');
+		$btn->click();
+		$search = $this->getElementById('alert4');
+		$this->assertEquals($search->getAttribute("class"),"alert alert-warning");
+	}
 }

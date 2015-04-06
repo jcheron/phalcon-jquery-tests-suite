@@ -1,6 +1,7 @@
 <?php
 
 use Ajax\bootstrap\html\base\CssRef;
+use Ajax\bootstrap\html\HtmlAlert;
 class IndexController extends ControllerBase
 {
 
@@ -19,6 +20,8 @@ class IndexController extends ControllerBase
 		$alert3->addCloseButton();
 		$alert3->onClose($this->jquery->append("#alert1","<div id='close-message'>Alert3 closed</div>"));
 
+		$alert4=new HtmlAlert("alert4","Alert 4",CssRef::CSS_WARNING);
+		$this->jquery->click("#btNewAlert",$this->jquery->append("#newAlert",$alert4));
 		$this->jquery->compile($this->view);
 	}
 }
