@@ -24,4 +24,22 @@ abstract class AjaxUnitTest extends \Test\UnitTestCase {
     	if($this->webDriver!=null)
     		$this->webDriver->close();
     }
+
+    /**
+     * Loads the relative url $url in web browser
+     * @param string $url
+     */
+    public function get($url=""){
+   		$url=$this->url.$url;
+    	$this->webDriver->get($url);
+    }
+
+    /**
+     * Returns a given element by id
+     * @param string $id HTML id attribute of the element to return
+     * @return RemoteWebElement
+     */
+    public function getElementById($id){
+    	return $this->webDriver->findElement(\WebDriverBy::id($id));
+    }
 }

@@ -19,7 +19,7 @@ class UnitTest extends AjaxUnitTest {
     }
 
     public function testClick(){
-    	$this->webDriver->get($this->url);
+    	$this->get();
     	$search = $this->webDriver->findElement(\WebDriverBy::id('alert1'));
     	$search->click();
     	$btn=$this->webDriver->findElement(\WebDriverBy::id('newButton'));
