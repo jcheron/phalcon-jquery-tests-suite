@@ -27,3 +27,9 @@ java -jar selenium-server-stan
 dalone-2.37.0.jar -Dwebdriver.chrome.driver=PATH/TO/CHROMEDRIVER/chromedriv
 er.exe
 ```
+
+run the tests in a new console, in the **tests** folder :
+
+```bash
+phpunit
+```
