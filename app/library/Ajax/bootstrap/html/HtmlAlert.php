@@ -56,4 +56,8 @@ class HtmlAlert extends HtmlDoubleElement {
 		return $this->_bsComponent;
 	}
 
+	public function close(){
+		return "$('#".$this->identifier."').alert('close');";
+	}
+
 }

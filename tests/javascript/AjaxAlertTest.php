@@ -48,4 +48,24 @@ class UnitTest extends AjaxUnitTest {
 		$search = $this->getElementById('alert4');
 		$this->assertEquals($search->getAttribute("class"),"alert alert-warning");
 	}
+
+	public function testBtnDismiss(){
+		$search = $this->getElementById('alert5');
+		$this->assertEquals($search->getAttribute("class"),"alert alert-info");
+
+		$btn = $this->getElementById('btnDismiss');
+		$btn->click();
+		$this->assertFalse($this->elementExists("#alert5"));
+	}
+
+	public function testCloseMethod(){
+		$search = $this->getElementById('alert6');
+		$this->assertEquals($search->getAttribute("class"),"alert alert-info");
+
+		$btn = $this->getElementById('btCloseAlert6');
+		$btn->click();
+		$this->assertFalse($this->elementExists("#alert6"));
+	}
+
+
 }

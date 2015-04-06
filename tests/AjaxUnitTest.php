@@ -55,6 +55,15 @@ abstract class AjaxUnitTest extends \Tests\UnitTestCase {
     }
 
     /**
+     * Tests if an element exist
+     * @param string $css_selector
+     * @return boolean
+     */
+    public function elementExists($css_selector){
+    	return sizeof($this->getElementsBySelector($css_selector))!==0;
+    }
+
+    /**
      * Returns a given element by css selector
      * @param string $css_selector
      * @return RemoteWebElement
