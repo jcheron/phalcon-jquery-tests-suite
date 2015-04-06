@@ -6,7 +6,7 @@ Php unit tests suite for phalcon-jquery library
 Just clone the repository in your web server root folder :
 
 ```
-git clone https://github.com/jcheron/phalcon-jquery.git
+git clone https://github.com/jcheron/phalcon-jquery-tests-suite.git
 ```
 
 ##Running the tests
