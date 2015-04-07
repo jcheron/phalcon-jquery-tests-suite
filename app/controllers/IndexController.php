@@ -30,4 +30,9 @@ class IndexController extends ControllerBase
 
 		$this->jquery->compile($this->view);
 	}
+
+	public function buttonAction(){
+		$this->jquery->bootstrap()->htmlButton("bt1","Default button",CssRef::CSS_DEFAULT,$this->jquery->html("#message","'bt1 click event'"));
+		$this->jquery->compile($this->view);
+	}
 }
