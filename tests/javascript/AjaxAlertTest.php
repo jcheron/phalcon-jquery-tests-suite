@@ -96,10 +96,17 @@ class AjaxAlertTest extends AjaxUnitTest {
 		$this->assertTrue($this->elementExists("#close-message-6"));
 	}
 
+	/**
+	 * Constructs an alert from array
+	 */
 	public function testFromArray(){
 		$search = $this->getElementById('alert7');
 		$this->assertContains("alert-warning",$search->getAttribute("class"));
+		$this->assertContains("Contenu de alert 7",$search->getText());
 		$this->assertTrue($this->elementExists("#alert7 .close"));
+		$this->assertTrue($search->isDisplayed());
+		$search->click();
+		$this->assertFalse($search->isDisplayed());
 	}
 
 

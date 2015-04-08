@@ -5,6 +5,7 @@ namespace Tests\javascript;
 use Phalcon\DiInterface;
 use Phalcon\Config;
 use Tests\AjaxUnitTest;
+use Ajax\bootstrap\html\base\CssRef;
 /**
  * Test of Html Button component
  * Class AjaxButtonTest
@@ -31,7 +32,47 @@ class AjaxButtonTest extends AjaxUnitTest {
 	 */
 	public function testCssClass(){
 		$search = $this->getElementById('bt1');
-		$this->assertEquals($search->getAttribute("class"),"btn btn-default");
+		$this->assertContains("btn-default",$search->getAttribute("class"));
+	}
+
+	/**
+	 * Styles by index
+	 */
+	public function testStylesByIndex(){
+		for($index=0;$index<6;$index++){
+			$search = $this->getElementById('bt-'.$index);
+			$this->assertContains(CssRef::Styles("btn")[$index],$search->getAttribute("class"));
+		}
+	}
+
+	/**
+	 * Create button from array
+	 */
+	public function testFromArray(){
+		$search = $this->getElementById('bt8');
+		$this->assertContains("btn-info",$search->getAttribute("class"));
+		$this->assertContains("bt8 value",$search->getText());
+	}
+
+
+	/**
+	 * Active and disabled states
+	 */
+	public function testActiveDisabled(){
+		$search = $this->getElementById('bt8');
+		$this->assertContains("active",$search->getAttribute("class"));
+		$search = $this->getElementById('bt9');
+		$this->assertContains("disabled",$search->getAttribute("class"));
+	}
+
+	/**
+	 * Labels and badges
+	 */
+	public function testBadgeLabel(){
+		$search = $this->getElementBySelector('#bt10 .label');
+		$this->assertContains("label-success",$search->getAttribute("class"));
+		$search = $this->getElementBySelector('#bt11 .badge');
+		$this->assertEquals("I am a badge",$search->getText());
 	}
 
 	/**

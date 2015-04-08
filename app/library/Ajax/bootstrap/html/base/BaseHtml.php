@@ -243,6 +243,10 @@ abstract class BaseHtml extends BaseWidget {
 		return $this->addEvent("click", $jsCode,$stopPropagation,$preventDefault);
 	}
 
+	public function setClick($jsCode){
+		return $this->onClick($jsCode);
+	}
+
 	public function addEventsOnRun(JsUtils $js){
 		if(isset($this->_bsComponent)){
 			foreach ($this->events as $event=>$jsCode){
