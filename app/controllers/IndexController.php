@@ -27,7 +27,8 @@ class IndexController extends ControllerBase
 		$alert6=$this->jquery->bootstrap()->htmlAlert("alert6","Alert 6",CssRef::CSS_INFO);
 		$this->jquery->click("#btCloseAlert6",$alert6->close());
 		$alert6->onClose($this->jquery->append("#alert1","<div id='close-message-6'>Alert6 closed</div>"));
-
+		$alert7=$this->jquery->bootstrap()->htmlAlert("alert7");
+		$alert7->fromArray(array("message"=>"Contenu de alert 7","style"=>CssRef::CSS_WARNING,"closeable"=>true));
 		$this->jquery->compile($this->view);
 	}
 
