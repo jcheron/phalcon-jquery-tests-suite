@@ -17,7 +17,7 @@
 	</php>
 	<testsuites>
 		<testsuite name="Test loader Phalcon">
-			<file>tests/LoaderTest.php</file>
+			<file>./LoaderTest.php</file>
 		</testsuite>
 	</testsuites>
 </phpunit>
