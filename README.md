@@ -1,6 +1,8 @@
 # phalcon-jquery-tests-suite
 Php unit tests suite for phalcon-jquery library
 
+[![Build Status](https://img.shields.io/travis/jcheron/phalcon-jquery-tests-suite/master.svg?style=flat-square)](https://travis-ci.org/jcheron/phalcon-jquery-tests-suite)
+
 ## Installing via Github
 
 Just clone the repository in your web server root folder :
