@@ -2,6 +2,11 @@
 namespace Ajax;
 use Phalcon\Version;
 use Phalcon\DiInterface;
+require_once 'lib/CDNJQuery.php';
+require_once 'lib/CDNGuiGen.php';
+require_once 'lib/CDNBootstrap.php';
+require_once 'service/JArray.php';
+require_once 'config/DefaultConfig.php';
 abstract class _Foo2 implements \Phalcon\DI\InjectionAwareInterface{
 	public function getDI(){}
 }
