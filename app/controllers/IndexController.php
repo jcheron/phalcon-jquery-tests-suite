@@ -58,4 +58,8 @@ class IndexController extends ControllerBase
 		$bt11->onClick($this->jquery->append("#creation",new HtmlButton("bt13","Button 13")));
 		$this->jquery->compile($this->view);
 	}
+
+	public function buttonsGroupAction(){
+
+	}
 }
