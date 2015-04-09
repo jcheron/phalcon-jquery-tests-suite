@@ -128,7 +128,7 @@ abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 		}
 
 		extract($defaults);
-		$this->js=new Jquery();
+		//$this->js=new Jquery();
 		$this->cdns=array();
 	}
 
