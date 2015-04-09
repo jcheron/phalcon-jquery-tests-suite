@@ -5,7 +5,7 @@ class LoaderTest extends PHPUnit_Framework_TestCase{
 	{
 		$loader = new Phalcon\Loader();
 		$loader->registerNamespaces(array(
-			"Ajax" => __DIR__ . '/../app/library/Ajax/'
+			"Ajax" =>'../app/library/Ajax/'
 		));
 		$loader->register();
 		$some = new \Ajax\Foo2();
