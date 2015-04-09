@@ -22,6 +22,10 @@ ROOT_PATH . PATH_SEPARATOR . get_include_path()
 // autoload the dependencies found in composer
 $loader = new \Phalcon\Loader();
 
+$loader->registerNamespaces(array(
+		'Ajax' => __DIR__ . '/../app/library/Ajax/'
+));
+
 $loader->registerDirs(array(
 		ROOT_PATH,PATH_LIBRARY,PATH_VIEWS,PATH_CONTROLLERS
 ));
