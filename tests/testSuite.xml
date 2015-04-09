@@ -9,18 +9,13 @@
 	processIsolation="false"
 	stopOnFailure="false"
 	syntaxCheck="true"
-	strict="true"
 	timeoutForSmallTests="10"
 	timeoutForMediumTests="50"
 	imeoutForLargeTests="600">
 	<php>
 		<ini name="report_memleaks" value="on"/>
 	</php>
-	<testsuites>
 		<testsuite name="Test loader Phalcon">
-
-			<!-- Basic Components -->
 			<file>tests/LoaderTest.php</file>
 		</testsuite>
-	</testsuites>
 </phpunit>
