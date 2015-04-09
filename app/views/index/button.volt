@@ -4,5 +4,6 @@
 	{{ element }}&nbsp;
 	{% endfor %}
 <div id="message" class="alert alert-info"></div>
+<div id="creation"></div>
 </div>
 {{script_foot}}

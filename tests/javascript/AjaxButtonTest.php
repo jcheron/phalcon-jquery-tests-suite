@@ -35,6 +35,22 @@ class AjaxButtonTest extends AjaxUnitTest {
 		$this->assertContains("btn-default",$search->getAttribute("class"));
 	}
 
+	public function testSize(){
+		$search = $this->getElementById('bt11');
+		$this->assertContains("btn-lg",$search->getAttribute("class"));
+	}
+
+	/**
+	 * Sizes by index
+	 */
+	public function testSizeByIndex(){
+		for($index=0;$index<4;$index++){
+			$search = $this->getElementById('bt-size'.$index);
+			if(CssRef::sizes("btn")[$index]!=="")
+				$this->assertContains(CssRef::sizes("btn")[$index],$search->getAttribute("class"));
+		}
+	}
+
 	/**
 	 * Styles by index
 	 */
@@ -76,12 +92,22 @@ class AjaxButtonTest extends AjaxUnitTest {
 	}
 
 	/**
-	 * Click on alert
+	 * Click on button
 	 */
-	public function testAlertClick(){
+	public function testButtonClick(){
 		$search = $this->getElementById('bt1');
 		$search->click();
 		$message=$this->getElementById('message');
 		$this->assertEquals($message->getText(), "bt1 click event");
+	}
+
+	/**
+	 * Multiple listeners for Click on button
+	 */
+	public function testButtonClick2(){
+		$search = $this->getElementById('bt11');
+		$search->click();
+		$this->assertTrue($this->elementExists('#bt12'));
+		$this->assertTrue($this->elementExists('#bt13'));
 	}
 }

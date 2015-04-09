@@ -2,6 +2,7 @@
 
 use Ajax\bootstrap\html\base\CssRef;
 use Ajax\bootstrap\html\HtmlAlert;
+use Ajax\bootstrap\html\HtmlButton;
 class IndexController extends ControllerBase
 {
 
@@ -47,6 +48,14 @@ class IndexController extends ControllerBase
 		$bt10->addLabel("I am a label",CssRef::CSS_SUCCESS);
 		$bt11=$this->jquery->bootstrap()->htmlButton("bt11","Button with badge");
 		$bt11->addBadge("I am a badge");
+		$bt11->setSize("btn-lg");
+		for($index=0;$index<4;$index++){
+			$bt=$this->jquery->bootstrap()->htmlButton("bt-size".$index,"Default button with size ".$index."(".CssRef::sizes()[$index].")");
+			$bt->setSize($index);
+		}
+
+		$bt11->onClick($this->jquery->append("#creation",new HtmlButton("bt12","Button 12")));
+		$bt11->onClick($this->jquery->append("#creation",new HtmlButton("bt13","Button 13")));
 		$this->jquery->compile($this->view);
 	}
 }
