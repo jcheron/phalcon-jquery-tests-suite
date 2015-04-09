@@ -7,6 +7,7 @@ require_once 'lib/CDNGuiGen.php';
 require_once 'lib/CDNBootstrap.php';
 require_once 'service/JArray.php';
 require_once 'config/DefaultConfig.php';
+require_once 'Jquery.php';
 abstract class _Foo2 implements \Phalcon\DI\InjectionAwareInterface{
 	public function __construct($params = array()){
 		$defaults = array('driver' => 'Jquery');
@@ -18,7 +19,7 @@ abstract class _Foo2 implements \Phalcon\DI\InjectionAwareInterface{
 		}
 
 		extract($defaults);
-		//$this->js=new Jquery();
+		$this->js=new Jquery();
 		$this->cdns=array();
 	}
 	public function getDI(){}

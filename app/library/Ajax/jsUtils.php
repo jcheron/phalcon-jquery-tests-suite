@@ -48,13 +48,13 @@ abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 	public function ui($ui=NULL){
 		if($ui!==NULL){
 			$this->_ui=$ui;
-			if($this->js!=null){
-				$this->js->ui($ui);
-				$ui->setJs($this);
-				$bs=$this->bootstrap();
-				if(isset($bs)){
-					$this->conflict();
-				}
+ 			if($this->js!=null){
+ 				$this->js->ui($ui);
+ 				$ui->setJs($this);
+ 			}
+			$bs=$this->bootstrap();
+			if(isset($bs)){
+				$this->conflict();
 			}
 		}
 		return $this->_ui;
@@ -63,13 +63,13 @@ abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 	public function bootstrap($bootstrap=NULL){
 		if($bootstrap!==NULL){
 			$this->_bootstrap=$bootstrap;
-			if($this->js!=null){
-				$this->js->bootstrap($bootstrap);
-				$bootstrap->setJs($this);
-				$ui=$this->ui();
-				if(isset($ui)){
-					$this->conflict();
-				}
+ 			if($this->js!=null){
+ 				$this->js->bootstrap($bootstrap);
+ 				$bootstrap->setJs($this);
+ 			}
+			$ui=$this->ui();
+			if(isset($ui)){
+				$this->conflict();
 			}
 		}
 		return $this->_bootstrap;
