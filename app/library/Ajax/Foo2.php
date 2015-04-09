@@ -1,5 +1,5 @@
 <?php
 namespace Ajax;
-class Foo2{
+abstract class Foo2 implements \Phalcon\DI\InjectionAwareInterface{
 
 }

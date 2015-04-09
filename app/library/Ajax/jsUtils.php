@@ -25,7 +25,7 @@ require_once 'config/DefaultConfig.php';
 /**
  * JsUtils Class : Phalcon service to be injected
  **/
-class JsUtils implements \Phalcon\DI\InjectionAwareInterface{
+abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 	protected $_di;
 	protected $js;
 	protected $cdns;
@@ -1347,14 +1347,7 @@ class JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 		ksort($result);
 		return implode("\n", $result);
 	}
-	public function setDi($di)
-	{
-		$this->_di = $di;
-		if($this->js!=null && $di!=null)
-			$this->js->setDi($di);
-	}
 }
-/*
 if(Version::get()==="1.3.4"){
 	class JsUtils extends _JsUtils{
 		public function setDi($di)
@@ -1374,7 +1367,6 @@ if(Version::get()==="1.3.4"){
 		}
 	}
 }
-*/
 // END Javascript Class
 
 /* End of file Javascript.php */
