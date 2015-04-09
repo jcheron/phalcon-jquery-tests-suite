@@ -18,7 +18,7 @@ abstract class _Foo2 implements \Phalcon\DI\InjectionAwareInterface{
 		}
 
 		extract($defaults);
-		$this->js=new Jquery();
+		//$this->js=new Jquery();
 		$this->cdns=array();
 	}
 	public function getDI(){}
