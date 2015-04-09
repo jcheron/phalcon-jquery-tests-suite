@@ -15,7 +15,9 @@
 	<php>
 		<ini name="report_memleaks" value="on"/>
 	</php>
+	<testsuites>
 		<testsuite name="Test loader Phalcon">
 			<file>tests/LoaderTest.php</file>
 		</testsuite>
+	</testsuites>
 </phpunit>
