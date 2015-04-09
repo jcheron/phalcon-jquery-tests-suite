@@ -38,7 +38,12 @@ abstract class UnitTestCase extends PhalconTestCase {
         } else {
             $this->_config = $config;
         }
+        $loader = new \Phalcon\Loader();
 
+        $loader->registerNamespaces(array(
+        		"Ajax" => "../app/library/Ajax/"
+        ));
+        $loader->register();
         // Set it as default if anything else uses the DI::getDefault() static method
         DI::setDefault($di);
 
