@@ -10,4 +10,4 @@ before_script:
  - php composer.phar install
  - gem install selenium-webdriver
 
-script: (cd tests; phpunit --configuration PHPunit.xml --debug)
+script: (cd tests; phpunit --configuration testSuite.xml --debug)
