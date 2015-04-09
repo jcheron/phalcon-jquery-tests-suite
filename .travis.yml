@@ -8,5 +8,6 @@ before_script:
  - (cd cphalcon/ext; phpize && ./configure && make -B && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
+ - gem install selenium-webdriver
 
 script: (cd tests; phpunit --debug)
