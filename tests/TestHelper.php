@@ -17,13 +17,6 @@ set_include_path(
 ROOT_PATH . PATH_SEPARATOR . get_include_path()
 );
 
-// required for phalcon/incubator
-include __DIR__ . "/../vendor/autoload.php";
-require_once __DIR__.'/support/WebDriverAssertions.php';
-require_once __DIR__.'/support/WebDriverDevelop.php';
-require_once __DIR__.'/UnitTestCase.php';
-require_once __DIR__.'/AjaxUnitTest.php';
-require_once __DIR__.'/PhalconUnitTest.php';
 
 // use the application autoloader to autoload the classes
 // autoload the dependencies found in composer
@@ -34,3 +27,12 @@ $loader->registerDirs(array(
 ));
 
 $loader->register();
+
+// required for phalcon/incubator
+include __DIR__ . "/../vendor/autoload.php";
+require_once __DIR__.'/support/WebDriverAssertions.php';
+require_once __DIR__.'/support/WebDriverDevelop.php';
+require_once __DIR__.'/UnitTestCase.php';
+require_once __DIR__.'/AjaxUnitTest.php';
+require_once __DIR__.'/PhalconUnitTest.php';
+

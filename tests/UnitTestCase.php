@@ -35,7 +35,6 @@ abstract class UnitTestCase extends PhalconTestCase {
         // We can put it into the DI also if we wanted to
         if(is_null($config)) {
             $this->_config = $config = include __DIR__ . "/../app/config/config.php";
-            include __DIR__ . "/../app/config/loader.php";
         } else {
             $this->_config = $config;
         }
