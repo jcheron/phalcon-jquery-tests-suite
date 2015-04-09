@@ -8,8 +8,8 @@ class LoaderTest extends PHPUnit_Framework_TestCase{
 			"Ajax" =>'../app/library/Ajax/'
 		));
 		$loader->register();
-		$some = new \Ajax\Foo2();
-		$this->assertEquals(get_class($some), 'Ajax\Foo2',"Impossible d'instancier ".$some);
+		$some = new \Ajax\JsUtils();
+		$this->assertEquals(get_class($some), 'Ajax\JsUtils',"Impossible d'instancier ");
 		$loader->unregister();
 	}
 }
