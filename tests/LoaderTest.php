@@ -8,8 +8,8 @@ class LoaderTest extends PHPUnit_Framework_TestCase{
 			"Ajax" => "../app/library/Ajax/"
 		));
 		$loader->register();
-		$some = new \Ajax\bootstrap\html\HtmlAccordion("id");
-		$this->assertEquals(get_class($some), 'Ajax\bootstrap\html\HtmlAccordion');
+		$some = new \Ajax\JsUtils();
+		$this->assertEquals(get_class($some), 'Ajax\JsUtils');
 		$loader->unregister();
 	}
 }
