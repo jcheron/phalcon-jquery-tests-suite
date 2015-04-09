@@ -1,5 +1,6 @@
 <?php
 namespace Ajax;
-abstract class Foo2 implements \Phalcon\DI\InjectionAwareInterface{
-
+class Foo2 implements \Phalcon\DI\InjectionAwareInterface{
+	public function setDI($dependencyInjector){}
+	public function getDI(){}
 }
