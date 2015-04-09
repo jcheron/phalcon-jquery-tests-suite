@@ -23,7 +23,7 @@ ROOT_PATH . PATH_SEPARATOR . get_include_path()
 $loader = new \Phalcon\Loader();
 
 $loader->registerNamespaces(array(
-		'Ajax' =>'../app/library/Ajax/'
+			"Ajax" => __DIR__ . '/../app/library/Ajax/'
 ));
 
 $loader->registerDirs(array(

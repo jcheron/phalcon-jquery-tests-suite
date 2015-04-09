@@ -5,11 +5,11 @@ class LoaderTest extends PHPUnit_Framework_TestCase{
 	{
 		$loader = new Phalcon\Loader();
 		$loader->registerNamespaces(array(
-			"Ajax" => "../app/library/Ajax/"
+			"Ajax" => __DIR__ . '/../app/library/Ajax/'
 		));
 		$loader->register();
 		$some = new \Ajax\JsUtils();
-		$this->assertEquals(get_class($some), 'Ajax\JsUtils');
+		$this->assertEquals(get_class($some), 'Ajax\JsUtils',"Impossible d'instancier ".$some);
 		$loader->unregister();
 	}
 }
