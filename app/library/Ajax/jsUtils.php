@@ -86,7 +86,7 @@ abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 	 * @return \Ajax\config\Config
 	 */
 	public function config($config=NULL){
-		if($config===NULL){
+		/*if($config===NULL){
 			if($this->config===NULL){
 				$this->config=new DefaultConfig();
 			}
@@ -94,7 +94,7 @@ abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 			$this->config=new Config($config);
 		}elseif($config instanceof Config){
 			$this->config=$config;
-		}
+		}*/
 		return $this->config;
 	}
 
@@ -1321,7 +1321,7 @@ abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 		$hasJQueryUI=false;
 		$hasBootstrap=false;
 		$result=array();
-		foreach ($this->cdns as $cdn){
+		/*foreach ($this->cdns as $cdn){
 			switch (get_class($cdn)){
 				case "Ajax\lib\CDNJQuery":
 					$hasJQuery=true;
@@ -1346,7 +1346,7 @@ abstract class _JsUtils implements \Phalcon\DI\InjectionAwareInterface{
 		if($hasBootstrap===false && isset($this->_bootstrap)){
 			$result[2]=new CDNBootstrap("x");
 		}
-		ksort($result);
+		ksort($result);*/
 		return implode("\n", $result);
 	}
 }
