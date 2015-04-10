@@ -9,5 +9,6 @@ before_script:
  - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
- - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver
+  - "export DISPLAY=:4444.0"
+  - "sh -e /etc/init.d/xvfb start"
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
