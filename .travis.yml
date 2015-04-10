@@ -23,6 +23,6 @@ before_script:
 # - "java -jar server/selenium-server-standalone-2.37.0.jar > /dev/null &"
 # - sleep 10
  - "wget http://selenium.googlecode.com/files/selenium-server-standalone-2.31.0.jar"
- - "java -jar selenium-server-standalone-2.31.0.jar > /dev/null &"
+ - "java -jar selenium-server-standalone-2.31.0.jar"
  - sleep 5
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
