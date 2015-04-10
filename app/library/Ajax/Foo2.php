@@ -27,7 +27,7 @@ require_once 'Jquery.php';
 /**
  * JsUtils Class : Phalcon service to be injected
  **/
-abstract class _Foo implements \Phalcon\DI\InjectionAwareInterface{
+abstract class _Foo2 implements \Phalcon\DI\InjectionAwareInterface{
 	protected $_di;
 	protected $js;
 	protected $cdns;
@@ -1351,7 +1351,7 @@ abstract class _Foo implements \Phalcon\DI\InjectionAwareInterface{
 	}
 }
 if(Version::get()==="1.3.4"){
-	class Foo extends _Foo{
+	class Foo2 extends _Foo2{
 		public function setDi($di)
 		{
 			$this->_di = $di;
@@ -1360,7 +1360,7 @@ if(Version::get()==="1.3.4"){
 		}
 	}
 }else{
-	class Foo extends _Foo{
+	class Foo2 extends _Foo2{
 		public function setDi(DiInterface $di)
 		{
 			$this->_di = $di;
