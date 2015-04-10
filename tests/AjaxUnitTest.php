@@ -8,7 +8,7 @@ namespace Tests;
 abstract class AjaxUnitTest extends \Tests\UnitTestCase {
 	use \WebDriverAssertions;
 	use \WebDriverDevelop;
-	protected static $url = 'http://localhost/phalcon-jquery-tests-suite/';
+	protected static $url = 'http://localhost/';
 	/**
 	* @var \RemoteWebDriver
 	*/
