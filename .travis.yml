@@ -12,6 +12,4 @@ before_script:
  - "export DISPLAY=:4444.0"
  - "sh -e /etc/init.d/xvfb start"
  - sleep 3 # give xvfb some time to start
- - rackup  # start a Web server
- - sleep 3 # give Web server some time to bind to sockets, etc
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
