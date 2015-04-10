@@ -34,7 +34,7 @@ class AjaxAlertTest extends AjaxUnitTest {
 	 * The Style attribute is correctly set
 	 */
 	public function testCssClass(){
-		$search = $this->getElementBySelector('.alert-success');
+		$search = $this->getElementById('alert1');
 		$this->assertEquals($search->getAttribute("class"),"alert alert-success");
 		$search = $this->getElementById('alert2');
 		$this->assertEquals($search->getAttribute("class"),"alert alert-danger");
