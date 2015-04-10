@@ -3,8 +3,8 @@ php:
   - 5.4
   - 5.5
   - 5.6
-addons:
-  firefox: "27.0"
+#addons:
+#  firefox: "27.0"
 before_script:
  - git clone -q https://github.com/phalcon/cphalcon.git
  - (cd cphalcon/ext; phpize && ./configure && make -B && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
@@ -19,6 +19,7 @@ before_script:
 # - sudo apt-get install google-chrome-stable
 # - sudo chmod +rwx server/driver/chrome/chromedriver
 # - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver &
+ - "wget http://chromedriver.storage.googleapis.com/2.15/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin"
  - java -jar server/selenium-server-standalone-2.37.0.jar &
  - sleep 10
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)

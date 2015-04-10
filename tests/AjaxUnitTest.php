@@ -19,7 +19,7 @@ abstract class AjaxUnitTest extends \Tests\UnitTestCase {
 	 * @see PHPUnit_Framework_TestCase::setUpBeforeClass()
 	 */
 	public static function setUpBeforeClass() {
-		$capabilities = array(\WebDriverCapabilityType::BROWSER_NAME => 'firefox');
+		$capabilities = array(\WebDriverCapabilityType::BROWSER_NAME => 'chrome');
 		self::$webDriver = \RemoteWebDriver::create('http://127.0.0.1:4444/wd/hub', $capabilities);
 	}
 
