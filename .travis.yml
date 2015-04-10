@@ -9,11 +9,12 @@ before_script:
  - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
- - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
- - sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
- - sudo apt-get update
- - sudo apt-get install google-chrome-stable
- - sudo chmod +rwx server/driver/chrome/chromedriver
- - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver &
+# - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# - sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+# - sudo apt-get update
+# - sudo apt-get install google-chrome-stable
+# - sudo chmod +rwx server/driver/chrome/chromedriver
+# - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver &
+ - java -jar server/selenium-server-standalone-2.37.0.jar &
  - sleep 10
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
