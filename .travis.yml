@@ -11,6 +11,8 @@ before_script:
  - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
+ - "sh -e /etc/init.d/xvfb start"
+ - "export DISPLAY=:99.0"
 # - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
 # - sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
 # - sudo apt-get update
