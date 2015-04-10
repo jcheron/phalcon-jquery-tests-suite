@@ -9,6 +9,7 @@ before_script:
  - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
+ - sudo chmod +rwx server/driver/chrome/chromedriver
  - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver &
  - sleep 10
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
