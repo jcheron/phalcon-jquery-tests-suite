@@ -14,6 +14,6 @@ before_script:
  - sudo apt-get update
  - sudo apt-get install google-chrome-stable
  - sudo chmod +rwx server/driver/chrome/chromedriver
- - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver
+ - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver &
  - sleep 10
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
