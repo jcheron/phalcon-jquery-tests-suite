@@ -14,7 +14,6 @@ require_once 'lib/CDNGuiGen.php';
 require_once 'lib/CDNBootstrap.php';
 require_once 'service/JArray.php';
 require_once 'config/DefaultConfig.php';
-require_once 'Jquery.php';
 
 /**
  * JQuery Phalcon library
