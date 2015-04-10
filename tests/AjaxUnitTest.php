@@ -8,7 +8,7 @@ namespace Tests;
 abstract class AjaxUnitTest extends \Tests\UnitTestCase {
 	use \WebDriverAssertions;
 	use \WebDriverDevelop;
-	protected static $url = 'http://127.0.0.1/phalcon-jquery-tests-suite/';
+	protected static $url = 'http://localhost/phalcon-jquery-tests-suite/';
 	/**
 	* @var \RemoteWebDriver
 	*/
@@ -20,7 +20,7 @@ abstract class AjaxUnitTest extends \Tests\UnitTestCase {
 	 */
 	public static function setUpBeforeClass() {
 		$capabilities = array(\WebDriverCapabilityType::BROWSER_NAME => 'chrome');
-		self::$webDriver = \RemoteWebDriver::create('http://127.0.0.2:4444/wd/hub', $capabilities);
+		self::$webDriver = \RemoteWebDriver::create('http://localhost:4444/wd/hub', $capabilities);
 	}
 
 	public function setUp(\Phalcon\DiInterface $di = NULL, \Phalcon\Config $config = NULL) {

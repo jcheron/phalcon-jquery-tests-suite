@@ -19,7 +19,10 @@ before_script:
  - sudo apt-get install google-chrome-stable
 # - sudo chmod +rwx server/driver/chrome/chromedriver
 # - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver &
- - "wget http://chromedriver.storage.googleapis.com/2.15/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin"
- - "java -jar server/selenium-server-standalone-2.37.0.jar > /dev/null &"
- - sleep 10
+ - "wget http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin"
+# - "java -jar server/selenium-server-standalone-2.37.0.jar > /dev/null &"
+# - sleep 10
+ - "wget http://selenium.googlecode.com/files/selenium-server-standalone-2.31.0.jar"
+ - "java -jar selenium-server-standalone-2.31.0.jar > /dev/null &"
+ - sleep 5
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
