@@ -1,1 +1,1 @@
-java -jar selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=C:\lib\chromedriver_win32\chromedriver.exe
+java -jar selenium-server-standalone-2.45.0.jar -Dwebdriver.chrome.driver=C:\lib\chromedriver_win32\chromedriver.exe

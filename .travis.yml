@@ -4,7 +4,7 @@ php:
   - 5.5
   - 5.6
 addons:
-  firefox: "31.0"
+  firefox: "33.0"
 before_script:
  - git clone -q https://github.com/phalcon/cphalcon.git
  - (cd cphalcon/ext; phpize && ./configure && make -B && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
@@ -22,7 +22,7 @@ before_script:
 # - "wget http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin"
 # - "java -jar server/selenium-server-standalone-2.37.0.jar > /dev/null &"
 # - sleep 10
- - "wget http://selenium.googlecode.com/files/selenium-server-standalone-2.39.0.jar"
- - "java -jar selenium-server-standalone-2.39.0.jar > /dev/null &"
+ - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
+ - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null &"
  - sleep 5
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
