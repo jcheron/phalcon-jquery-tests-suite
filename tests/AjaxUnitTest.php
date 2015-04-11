@@ -8,7 +8,7 @@ namespace Tests;
 abstract class AjaxUnitTest extends \Tests\UnitTestCase {
 	use \WebDriverAssertions;
 	use \WebDriverDevelop;
-	protected static $url = 'http://127.0.0.1/';
+	protected static $url = 'http://127.0.0.1:8000/';
 	/**
 	* @var \RemoteWebDriver
 	*/
