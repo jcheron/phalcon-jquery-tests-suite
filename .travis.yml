@@ -16,9 +16,11 @@ before_script:
  - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
  - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null &"
  - sleep 5
- - (cd public; sudo php -S localhost:8000 .htrouter.php &)
+ - cd public
+ - sudo php -S localhost:8000 .htrouter.php &
  - sleep 5
+ - cd ..
 after_script:
  - sudo cat /var/log/apache2/access.log
  - sudo cat /var/log/apache2/error.log
-script: (cd ../tests; phpunit --configuration PHPunit.xml --debug)
+script: (cd tests; phpunit --configuration PHPunit.xml --debug)
