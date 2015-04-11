@@ -2,12 +2,13 @@
   DocumentRoot %TRAVIS_BUILD_DIR%
   RewriteEngine On
   RewriteRule ^/(public.*)$ /$1 [QSA,L,PT]
+  RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^/(.*)$ /php5-fcgi/$1 [QSA,L]
+  RewriteRule ^/(.*)$ /php5-fcgi/index.php?_url=/$1 [QSA,L]
 
   <Directory "%TRAVIS_BUILD_DIR%">
     Options FollowSymLinks MultiViews ExecCGI
-    AllowOverride All
+    AllowOverride none
     Order deny,allow
     Allow from all
   </Directory>
