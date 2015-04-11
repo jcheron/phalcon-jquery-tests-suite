@@ -36,6 +36,9 @@ before_script:
  - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
  - cat /etc/apache2/sites-available/default
  - sudo service apache2 restart
- - echo $TRAVIS_BUILD_DIR
  - ls /usr/lib/apache2/modules/
+after_script:
+ - tail -f /var/log/syslog
+ - tail -f /var/log/apache2/access.log
+ - tail -f /var/log/apache2/error.log
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
