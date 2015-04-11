@@ -1,10 +1,14 @@
 <VirtualHost *:80>
   DocumentRoot %TRAVIS_BUILD_DIR%
-  ProxyPassMatch ^/(.*\.php(/.*)?)$ fcgi://127.0.0.1:9000/%TRAVIS_BUILD_DIR%/$1
+  RewriteEngine On
+  RewriteRule ^/(public.*)$ /$1 [QSA,L,PT]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^/(.*)$ /php5-fcgi/$1 [QSA,L]
 
   <Directory "%TRAVIS_BUILD_DIR%">
     Options FollowSymLinks MultiViews ExecCGI
-    AllowOverride All
+    AllowOverride none
     Order deny,allow
     Allow from all
   </Directory>

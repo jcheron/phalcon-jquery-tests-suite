@@ -28,7 +28,7 @@ before_script:
  - sudo apt-get update
  - sudo apt-get install -y --force-yes apache2 libapache2-mod-fastcgi
  - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
- - sudo a2enmod rewrite actions fastcgi proxy_fcgi
+ - sudo a2enmod rewrite actions fastcgi alias
  - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
  - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
 # configure apache virtual hosts
@@ -38,7 +38,6 @@ before_script:
  - sudo service apache2 restart
  - ls /usr/lib/apache2/modules/
 after_script:
- - sudo cat /var/log/syslog
  - sudo cat /var/log/apache2/access.log
  - sudo cat /var/log/apache2/error.log
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
