@@ -11,7 +11,7 @@
         RewriteRule  (.*) /php5-fcgi/public/$1 [L]
   </Directory>
   
-  <Directory "%TRAVIS_BUILD_DIR%/public">
+  <Directory "/php5-fcgi/public">
     Options FollowSymLinks MultiViews ExecCGI
     AllowOverride none
     Order deny,allow
