@@ -34,4 +34,5 @@ before_script:
  - cat /etc/apache2/sites-available/default
  - sudo service apache2 restart
  - echo $TRAVIS_BUILD_DIR
+ - ls /usr/lib/apache2/modules/
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
