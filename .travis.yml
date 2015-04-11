@@ -29,7 +29,7 @@ before_script:
  - sudo apt-get install -y --force-yes apache2
  - sudo a2enmod rewrite
 # configure apache virtual hosts
-# - sudo cp -f tests/build/travis-ci-apache /etc/apache2/sites-available/default
-# - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
+ - sudo cp -f tests/build/travis-ci-apache /etc/apache2/sites-available/default
+ - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
  - sudo service apache2 restart
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
