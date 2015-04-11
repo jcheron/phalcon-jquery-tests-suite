@@ -38,7 +38,7 @@ before_script:
  - sudo service apache2 restart
  - ls /usr/lib/apache2/modules/
 after_script:
- - sudo tail -f /var/log/syslog
- - sudo tail -f /var/log/apache2/access.log
- - sudo tail -f /var/log/apache2/error.log
+ - sudo cat /var/log/syslog
+ - sudo cat /var/log/apache2/access.log
+ - sudo cat /var/log/apache2/error.log
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
