@@ -15,5 +15,6 @@
     Alias /php5-fcgi /usr/lib/cgi-bin/php5-fcgi
     FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -host 127.0.0.1:9000 -pass-header Authorization
   </IfModule>
-  
+RewriteEngine On
+  RewriteRule ^/(.*)$ /php5-fcgi/$1 [QSA,L]
 </VirtualHost>
