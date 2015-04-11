@@ -1,0 +1,43 @@
+language: php
+php:
+  - 5.4
+  - 5.5
+  - 5.6
+addons:
+  firefox: "33.0"
+before_script:
+ - git clone -q https://github.com/phalcon/cphalcon.git
+ - (cd cphalcon/ext; phpize && ./configure && make -B && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
+ - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
+ - wget http://getcomposer.org/composer.phar
+ - php composer.phar install
+ - "sh -e /etc/init.d/xvfb start"
+ - "export DISPLAY=:99.0"
+# - wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | sudo apt-key add -
+# - sudo sh -c 'echo "deb https://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google-chrome.list'
+# - sudo apt-get update
+# - sudo apt-get install google-chrome-stable
+# - sudo chmod +rwx server/driver/chrome/chromedriver
+# - java -jar server/selenium-server-standalone-2.37.0.jar -Dwebdriver.chrome.driver=server/driver/chrome/chromedriver &
+# - "wget http://chromedriver.storage.googleapis.com/2.14/chromedriver_linux64.zip && unzip chromedriver_linux64.zip && sudo mv chromedriver /usr/bin"
+# - "java -jar server/selenium-server-standalone-2.37.0.jar > /dev/null &"
+# - sleep 10
+ - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
+ - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null &"
+ - sleep 5
+ - sudo apt-get update
+ - sudo apt-get install -y --force-yes apache2 libapache2-mod-fastcgi
+ - sudo cp ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf.default ~/.phpenv/versions/$(phpenv version-name)/etc/php-fpm.conf
+ - sudo a2enmod rewrite actions fastcgi alias
+ - echo "cgi.fix_pathinfo = 1" >> ~/.phpenv/versions/$(phpenv version-name)/etc/php.ini
+ - ~/.phpenv/versions/$(phpenv version-name)/sbin/php-fpm
+# configure apache virtual hosts
+ - sudo cp -f tests/build/travis-ci-apache /etc/apache2/sites-available/default
+ - sudo sed -e "s?%TRAVIS_BUILD_DIR%?$(pwd)?g" --in-place /etc/apache2/sites-available/default
+ - cat /etc/apache2/sites-available/default
+ - sudo service apache2 restart
+ - ls /usr/lib/apache2/modules/
+after_script:
+ - sudo cat /var/log/apache2/access.log
+ - sudo cat /var/log/apache2/error.log
+script: (cd tests; phpunit --configuration PHPunit.xml --debug)
