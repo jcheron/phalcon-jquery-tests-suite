@@ -16,5 +16,8 @@
     FastCgiExternalServer /usr/lib/cgi-bin/php5-fcgi -host 127.0.0.1:9000 -pass-header Authorization
   </IfModule>
 RewriteEngine On
-  RewriteRule ^/(.*)$ /php5-fcgi/$1 [QSA,L]
+    RewriteRule ^/(public.*)$ /$1 [QSA,L,PT]
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteRule ^/(.*)$ /php5-fcgi/$1 [QSA,L]
 </VirtualHost>
