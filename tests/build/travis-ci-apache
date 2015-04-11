@@ -1,19 +1,27 @@
 <VirtualHost *:80>
   DocumentRoot %TRAVIS_BUILD_DIR%
-  RewriteEngine On
-  RewriteRule ^/(public.*)$ /$1 [QSA,L,PT]
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteRule ^/(.*)$ /php5-fcgi/index.php?_url=/$1 [QSA,L]
 
   <Directory "%TRAVIS_BUILD_DIR%">
     Options FollowSymLinks MultiViews ExecCGI
     AllowOverride none
     Order deny,allow
     Allow from all
+    RewriteEngine On
+        RewriteRule  ^$ /php5-fcgi/public/    [L]
+        RewriteRule  (.*) /php5-fcgi/public/$1 [L]
   </Directory>
   
+  <Directory "%TRAVIS_BUILD_DIR%/public">
+    Options FollowSymLinks MultiViews ExecCGI
+    AllowOverride none
+    Order deny,allow
+    Allow from all
+        RewriteCond %{REQUEST_FILENAME} !-d
+        RewriteCond %{REQUEST_FILENAME} !-f
+        RewriteRule ^/(.*)$ /php5-fcgi/index.php?_url=/$1 [QSA,L]
+  </Directory>
 # Wire up Apache to use Travis CI's php-fpm.
+
   <IfModule mod_fastcgi.c>
     AddHandler php5-fcgi .php
     Action php5-fcgi /php5-fcgi
