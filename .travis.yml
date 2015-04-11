@@ -17,7 +17,7 @@ before_script:
  - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null &"
  - sleep 5
  - cd public
- - php -S localhost:8000 .htrouter.php &
+ - php -S 127.0.0.1:8090 .htrouter.php &
  - sleep 5
  - cd ..
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
