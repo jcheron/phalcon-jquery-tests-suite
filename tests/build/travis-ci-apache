@@ -11,7 +11,7 @@
         RewriteRule  (.*) /php5-fcgi/public/$1 [QSA,L]
   </Directory>
   
-  <Directory "/php5-fcgi/public">
+  <Directory ~ "public/.*">
     Options FollowSymLinks MultiViews ExecCGI
     AllowOverride none
     Order deny,allow
