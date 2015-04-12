@@ -67,4 +67,23 @@ class AjaxButtonsGroupTest extends AjaxUnitTest {
 		}
 	}
 
+	public function testLabel(){
+		$search = $this->getElementBySelector('#bg1-button-2 .label');
+		$this->assertEquals("This is a label",$search->getText());
+	}
+
+	public function testBadge(){
+		$search = $this->getElementBySelector('#bg1-button-1 .badge');
+		$this->assertEquals("This is a badge",$search->getText());
+	}
+
+	public function testClick(){
+		$search = $this->getElementById("bg1-button-1");
+		$search->click();
+		$this->assertContains("bg1-button-1", $this->getElementById("message")->getText());
+		$search = $this->getElementById("bg1-button-2");
+		$search->click();
+		$this->assertContains("bg1-button-2", $this->getElementById("message")->getText());
+	}
+
 }

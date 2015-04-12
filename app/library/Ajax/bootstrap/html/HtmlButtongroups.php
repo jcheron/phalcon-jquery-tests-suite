@@ -115,7 +115,12 @@ class HtmlButtongroups extends HtmlDoubleElement {
 	 * @return HtmlButton
 	 */
 	public function getElement($index){
-		return $this->elements[$index];
+		if(is_int($index))
+			return $this->elements[$index];
+		else{
+			$elm=$this->getElementById($index, $this->elements);
+			return $elm;
+		}
 	}
 
 	public function setElement($index,$button){

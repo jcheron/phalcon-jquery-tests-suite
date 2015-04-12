@@ -60,7 +60,7 @@ class IndexController extends ControllerBase
 	}
 
 	public function buttonsGroupAction(){
-		$this->jquery->bootstrap()->htmlButtongroups("bg1",array("bouton 1","bouton 2"));
+		$bg1=$this->jquery->bootstrap()->htmlButtongroups("bg1",array("bouton 1","bouton 2"));
 		$this->jquery->bootstrap()->htmlButtongroups("bg2",array("bouton 1","bouton 2","bouton 3"),CssRef::CSS_INFO);
 		$this->jquery->bootstrap()->htmlButtongroups("bg3",array("bouton 1","bouton 2","bouton 3"),CssRef::CSS_PRIMARY,CssRef::sizes()[0]);
 		for($index=0;$index<4;$index++){
@@ -69,6 +69,9 @@ class IndexController extends ControllerBase
 		for($index=0;$index<6;$index++){
 			$this->jquery->bootstrap()->htmlButtongroups("bg-style-".$index,array("bouton style 1","bouton style 2","bouton style 3"),$index);
 		}
+		$bg1->getElement(0)->addBadge("This is a badge");
+		$bg1->getElement("bg1-button-2")->addLabel("This is a label");
+		$bg1->onClick("$('#message').append('<p>'+$(event.target).attr('id')+'</p>');");
 		$this->jquery->compile($this->view);
 	}
 }
