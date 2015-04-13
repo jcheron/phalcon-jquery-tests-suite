@@ -3,6 +3,8 @@
 use Ajax\bootstrap\html\base\CssRef;
 use Ajax\bootstrap\html\HtmlAlert;
 use Ajax\bootstrap\html\HtmlButton;
+use Ajax\bootstrap\html\HtmlGlyphButton;
+use Ajax\bootstrap\html\HtmlDropdown;
 class IndexController extends ControllerBase
 {
 
@@ -61,7 +63,7 @@ class IndexController extends ControllerBase
 
 	public function buttonsGroupAction(){
 		$bg1=$this->jquery->bootstrap()->htmlButtongroups("bg1",array("bouton 1","bouton 2"));
-		$this->jquery->bootstrap()->htmlButtongroups("bg2",array("bouton 1","bouton 2","bouton 3"),CssRef::CSS_INFO);
+		$bg2=$this->jquery->bootstrap()->htmlButtongroups("bg2",array("bouton 1","bouton 2","bouton 3"),CssRef::CSS_INFO);
 		$this->jquery->bootstrap()->htmlButtongroups("bg3",array("bouton 1","bouton 2","bouton 3"),CssRef::CSS_PRIMARY,CssRef::sizes()[0]);
 		for($index=0;$index<4;$index++){
 			$this->jquery->bootstrap()->htmlButtongroups("bg-size-".$index,array("bouton size 1","bouton size 2","bouton size 3"),CssRef::CSS_WARNING,$index);
@@ -72,6 +74,11 @@ class IndexController extends ControllerBase
 		$bg1->getElement(0)->addBadge("This is a badge");
 		$bg1->getElement("bg1-button-2")->addLabel("This is a label");
 		$bg1->onClick("$('#message').append('<p>'+$(event.target).attr('id')+'</p>');");
+		$bg2->addElement(new HtmlButton("button-g2-4","Bouton ajouté : hide bg1",CssRef::CSS_WARNING,$this->jquery->hide("#bg1")));
+		$bg2->addElement(new HtmlGlyphButton("button-g2-5","star","Button glyph"));
+		$bg4=$this->jquery->bootstrap()->htmlButtongroups("bg4");
+		$bg4->addElements(array("Button 1",new HtmlButton("Button2","Bouton 2"),new HtmlGlyphButton("Button-glyph-3",20,"Bouton Glyph 20"),new HtmlDropdown("dd4","Dropdown",array("Item1","item2"),CssRef::CSS_SUCCESS,"$('#message').append('<p>'+$(event.target).attr('id')+'</p>');")));
+		$bg4->getElement(3)->getItem(0)->onClick("$('#message').append('<p>'+$(event.target).text()+'</p>');");
 		$this->jquery->compile($this->view);
 	}
 }

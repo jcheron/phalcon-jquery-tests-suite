@@ -86,4 +86,32 @@ class AjaxButtonsGroupTest extends AjaxUnitTest {
 		$this->assertContains("bg1-button-2", $this->getElementById("message")->getText());
 	}
 
+	public function testAddElementAndClick(){
+		$search = $this->getElementById("button-g2-4");
+		$this->assertContains(CssRef::CSS_WARNING,$search->getAttribute("class"));
+		$this->assertContains("Bouton ajouté : hide bg1",$search->getAttribute("value").$search->getText());
+		$this->assertTrue($search->isDisplayed());
+		$search->click();
+		$search = $this->getElementById("bg1");
+		$this->assertFalse($search->isDisplayed());
+	}
+
+	public function testAddElementGlyph(){
+		$search = $this->getElementById("button-g2-5");
+		$this->assertContains(CssRef::CSS_DEFAULT,$search->getAttribute("class"));
+		$this->assertContains("Button glyph",$search->getAttribute("value").$search->getText());
+		$search=$this->getElementBySelector("#button-g2-5 .glyphicon");
+		$this->assertContains(CssRef::glyphIcons()[12],$search->getAttribute("class"));
+	}
+
+	public function testAddElementDropdown(){
+		$search = $this->getElementById("dd4");
+		$search->click();
+		$message=$this->getElementById("message");
+		$this->assertContains("dd4", $message->getText());
+		$search=$this->getElementById("dd4-dropdown-item-1");
+		$search->click();
+		$this->assertContains("Item1", $message->getText());
+	}
+
 }
