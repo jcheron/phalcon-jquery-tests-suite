@@ -4,7 +4,7 @@ use Ajax\JsUtils;
 use Ajax\bootstrap\html\base\CssRef;
 use Ajax\bootstrap\html\base\HtmlDoubleElement;
 /**
- * Composant Twitter Bootstrap Buttongroups
+ * Twitter Bootstrap Buttongroups component
  * @author jc
  * @version 1.001
  */
