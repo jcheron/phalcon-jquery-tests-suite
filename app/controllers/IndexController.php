@@ -81,4 +81,19 @@ class IndexController extends ControllerBase
 		$bg4->getElement(3)->getItem(0)->onClick("$('#message').append('<p>'+$(event.target).text()+'</p>');");
 		$this->jquery->compile($this->view);
 	}
+
+	public function buttonsToolbarAction(){
+		$btb1=$this->jquery->bootstrap()->htmlButtontoolbar("btb1",array("Bouton 1","Bouton 2"));
+		$btb2=$this->jquery->bootstrap()->htmlButtontoolbar("btb2",array("Bouton 1","Bouton 2"),CssRef::CSS_PRIMARY,CssRef::sizes()[0]);
+		$groupe1=$btb1->addGroup();
+		$groupe1->addElements(array("Bouton 3","Bouton 4",new HtmlGlyphButton("bt5",12,"Bouton 5",CssRef::CSS_PRIMARY)));
+		$groupe1->addElement(new HtmlDropdown("dd1","Dropdown button",array("Item 1","Item 2"),CssRef::CSS_SUCCESS));
+		for($index=0;$index<4;$index++){
+			$this->jquery->bootstrap()->htmlButtontoolbar("btb-size-".$index,array("bouton size 1","bouton size 2","bouton size 3"),CssRef::CSS_WARNING,$index);
+		}
+		for($index=0;$index<6;$index++){
+			$this->jquery->bootstrap()->htmlButtontoolbar("btb-style-".$index,array("bouton style 1","bouton style 2","bouton style 3"),$index);
+		}
+		$this->jquery->compile($this->view);
+	}
 }
