@@ -39,9 +39,15 @@ class ButtonsToolbarPageTest extends PhalconUnitTest {
     }
     public function testGetElement(){
     	$btb=new HtmlButtontoolbar("btb1",array("button1","button2"));
-    	$this->assertEquals($btb->getElement(0)->getElement(0), $btb->getElement(0)->getElement("btb1-buttongroups-0-button-1"));
-    	$this->assertEquals($btb->getElement(0)->getElement(1), $btb->getElement(0)->getElement("btb1-buttongroups-0-button-2"));
+    	$this->assertEquals($btb->getGroup(0)->getElement(0), $btb->getGroup(0)->getElement("btb1-buttongroups-0-button-1"));
+    	$this->assertEquals($btb->getGroup(0)->getElement(1), $btb->getGroup(0)->getElement("btb1-buttongroups-0-button-2"));
+    	$this->assertEquals($btb->getElement(0), $btb->getElement("btb1-buttongroups-0-button-1"));
+    	$this->assertEquals($btb->getElement(1), $btb->getElement("btb1-buttongroups-0-button-2"));
     	$bt=new HtmlButton("bt3");
     	$btb->addElement($bt);
+    	$this->assertEquals($btb->getGroup(0)->getElement(2), $bt);
+    	$this->assertEquals($btb->getGroup(0)->getElement("bt3"), $bt);
+    	$this->assertEquals($btb->getElement(2), $bt);
+    	$this->assertEquals($btb->getElement("bt3"), $bt);
     }
 }

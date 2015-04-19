@@ -155,4 +155,9 @@ class HtmlButtongroups extends HtmlDoubleElement {
 			$element->on($event,$jsCode,$stopPropagation,$preventDefault);
 		}
 	}
+
+	public function getElements() {
+		return $this->elements;
+	}
+
 }

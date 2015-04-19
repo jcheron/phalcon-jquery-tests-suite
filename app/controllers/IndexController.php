@@ -85,6 +85,8 @@ class IndexController extends ControllerBase
 	public function buttonsToolbarAction(){
 		$btb1=$this->jquery->bootstrap()->htmlButtontoolbar("btb1",array("Bouton 1","Bouton 2"));
 		$btb2=$this->jquery->bootstrap()->htmlButtontoolbar("btb2",array("Bouton 1","Bouton 2"),CssRef::CSS_PRIMARY,CssRef::sizes()[0]);
+		$btb1->getElement(0)->addBadge("This is a badge");
+		$btb1->getElement(1)->addLabel("This is a label");
 		$groupe1=$btb1->addGroup();
 		$groupe1->addElements(array("Bouton 3","Bouton 4",new HtmlGlyphButton("bt5",12,"Bouton 5",CssRef::CSS_PRIMARY)));
 		$groupe1->addElement(new HtmlDropdown("dd1","Dropdown button",array("Item 1","Item 2"),CssRef::CSS_SUCCESS));
@@ -94,6 +96,12 @@ class IndexController extends ControllerBase
 		for($index=0;$index<6;$index++){
 			$this->jquery->bootstrap()->htmlButtontoolbar("btb-style-".$index,array("bouton style 1","bouton style 2","bouton style 3"),$index);
 		}
+		$btb1->onClick("$('#message').append('<p>'+$(event.target).text()+'</p>');");
+		$btb2->addElement(new HtmlButton("button-tb2-4","Bouton ajouté : hide btb1",CssRef::CSS_WARNING,$this->jquery->hide("#btb1")));
+
+		$btb3=$this->jquery->bootstrap()->htmlButtontoolbar("btb3");
+		$btb3->addElements(array("Button 1",new HtmlButton("Button2","Bouton 2"),new HtmlGlyphButton("Button-glyph-3","remove","Bouton Glyph 20"),new HtmlDropdown("dd4","Dropdown",array("Item1","item2"),CssRef::CSS_SUCCESS,"$('#message').append('<p>'+$(event.target).attr('id')+'</p>');")));
+		$btb3->getElement(3)->getItem(0)->onClick("$('#message').append('<p>'+$(event.target).text()+'</p>');");
 		$this->jquery->compile($this->view);
 	}
 }
