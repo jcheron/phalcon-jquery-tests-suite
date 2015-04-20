@@ -1,11 +1,11 @@
 <?php
+
 namespace Ajax\bootstrap\html;
 
 use Ajax\JsUtils;
 use Ajax\bootstrap\html\content\HtmlDropdownItem;
 use Ajax\bootstrap\html\base\CssRef;
 use Ajax\service\PhalconUtils;
-include_once 'content/HtmlDropdownItem.php';
 
 /**
  * Twitter Bootstrap HTML Dropdown component
@@ -17,70 +17,67 @@ class HtmlDropdown extends HtmlButton {
 	protected $class="dropdown-toggle";
 	protected $mClass="dropdown";
 	protected $mTagName="div";
-	protected $items=array();
+	protected $items=array ();
+
 	/**
+	 *
 	 * @param string $identifier the id
 	 */
-	public function __construct($identifier, $value="",$items=array(),$cssStyle=null,$onClick=null) {
-		parent::__construct($identifier,"",$cssStyle,$onClick);
+	public function __construct($identifier, $value="", $items=array(), $cssStyle=null, $onClick=null) {
+		parent::__construct($identifier, "", $cssStyle, $onClick);
 		$this->_template=include 'templates/tplDropdown.php';
 		$this->btnCaption=$value;
 		$this->tagName="a";
 		$this->fromArray($items);
-		if($cssStyle!==NULL){
+		if ($cssStyle!==NULL) {
 			$this->asButton($cssStyle);
 		}
 	}
+
 	/**
 	 * Define the tagName of the main element
-	 * @param string $value
-	 * default : div
+	 * @param string $value default : div
 	 */
-	public function setMTagName($value){
+	public function setMTagName($value) {
 		$this->mTagName=$value;
 	}
-
 
 	/**
 	 * define the button style
 	 * avaible values : "btn-default","btn-primary","btn-success","btn-info","btn-warning","btn-danger"
-	 * @param string/int $cssStyle
-	 * @return \Ajax\bootstrap\html\HtmlDropdown
-	 * default : "btn-default"
+	 * @param string|int $cssStyle
+	 * @return \Ajax\bootstrap\html\HtmlDropdown default : "btn-default"
 	 */
-	public function setStyle($cssStyle){
- 		if(is_int($cssStyle)){
- 			return $this->addToMember($this->class, CssRef::buttonStyles()[$cssStyle]);
- 		}
- 		if(PhalconUtils::startsWith($cssStyle, "btn-")===false){
- 			$cssStyle="btn".$cssStyle;
- 		}
- 		return $this->addToMemberCtrl($this->class, $cssStyle, CssRef::buttonStyles());
+	public function setStyle($cssStyle) {
+		if (is_int($cssStyle)) {
+			return $this->addToMember($this->class, CssRef::buttonStyles()[$cssStyle]);
+		}
+		if (PhalconUtils::startsWith($cssStyle, "btn-")===false) {
+			$cssStyle="btn".$cssStyle;
+		}
+		return $this->addToMemberCtrl($this->class, $cssStyle, CssRef::buttonStyles());
 	}
 
-
-	/* (non-PHPdoc)
+	/*
+	 * (non-PHPdoc)
 	 * @see \Ajax\bootstrap\html\HtmlButton::setValue()
 	 */
 	public function setValue($value) {
 		$this->btnCaption=$value;
 	}
 
-
 	/**
 	 * define the buttons size
 	 * available values : "btn-group-lg","","btn-group-sm","btn-group-xs"
-	 * @param string/int $size
-	 * @return \Ajax\bootstrap\html\HtmlButtonsgroup
-	 * default : ""
+	 * @param string|int $size
+	 * @return HtmlButtonsgroup default : ""
 	 */
-	public function setSize($size){
-		if(is_int($size)){
+	public function setSize($size) {
+		if (is_int($size)) {
 			return $this->addToProperty("class", CssRef::sizes("btn-group")[$size]);
 		}
 		return $this->addToPropertyCtrl("class", $size, CssRef::sizes("btn-group"));
 	}
-
 
 	/**
 	 * add an HtmlDropdownItem
@@ -88,54 +85,53 @@ class HtmlDropdown extends HtmlButton {
 	 * @param string $href
 	 * @return HtmlDropdownItem
 	 */
-	public function addItem($caption,$href="#"){
+	public function addItem($caption, $href="#") {
 		$iid=$this->getItemsCount()+1;
 		$item=new HtmlDropdownItem($this->identifier."-dropdown-item-".$iid);
 		$item->setCaption($caption)->setHref($href);
-		$this->items[]=$item;
+		$this->items []=$item;
 		return $item;
 	}
 
-	public function addDivider(){
+	public function addDivider() {
 		return $this->addItem("-");
 	}
 
-	public function addHeader($caption){
+	public function addHeader($caption) {
 		return $this->addItem("-".$caption);
 	}
 
-	public function addItems($items){
+	public function addItems($items) {
 		$iid=$this->getItemsCount()+1;
-		if(is_array($items)){
-			foreach ($items as $item){
-				if(is_string($item)){
+		if (is_array($items)) {
+			foreach ( $items as $item ) {
+				if (is_string($item)) {
 					$this->addItem($item);
-				}else if(is_array($item)){
+				} else if (is_array($item)) {
 					$dropDownItem=new HtmlDropdownItem($this->identifier."-dropdown-item-".$iid);
 					$dropDownItem->fromArray($item);
-					$this->items[]=$dropDownItem;
-				}else if($item instanceof HtmlDropdownItem){
-					$this->items[]=$item;
+					$this->items []=$dropDownItem;
+				} else if ($item instanceof HtmlDropdownItem) {
+					$this->items []=$item;
 				}
 			}
 		}
 		return $this;
 	}
 
-
-	/* (non-PHPdoc)
+	/*
+	 * (non-PHPdoc)
 	 * @see BaseHtml::fromArray()
 	 */
 	public function fromArray($array) {
-		if(array_keys($array) !== range(0, count($array) - 1))
+		if (array_keys($array)!==range(0, count($array)-1))
 			return parent::fromArray($array);
 		else
 			return $this->addItems($array);
 	}
 
-
-	public function setItems($items){
-		$this->items=array();
+	public function setItems($items) {
+		$this->items=array ();
 		$this->addItems($items);
 	}
 
@@ -144,34 +140,33 @@ class HtmlDropdown extends HtmlButton {
 	 * @param int $index
 	 * @return HtmlDropdownItem
 	 */
-	public function getItem($index){
-		return $this->items[$index];
+	public function getItem($index) {
+		return $this->items [$index];
 	}
 
-	public function setBtnClass($value){
-		//$this->addToMemberCtrl($this->class, $value, CssRef::buttonStyles());
+	public function setBtnClass($value) {
 		$this->class=$value;
 	}
 
-	public function setMClass($value){
-		//$this->addToMemberCtrl($this->class, $value, CssRef::buttonStyles());
+	public function setMClass($value) {
 		$this->mClass=$value;
 	}
 
-	public function addBtnClass($value){
+	public function addBtnClass($value) {
 		$this->addToMember($this->class, $value);
 	}
 
-	public function addmClass($value){
+	public function addmClass($value) {
 		$this->addToMember($this->mClass, $value);
 	}
 
-	/* (non-PHPdoc)
+	/*
+	 * (non-PHPdoc)
 	 * @see BaseHtml::run()
 	 */
 	public function run(JsUtils $js) {
-		if($this->getProperty("role")==="nav"){
-			foreach ($this->items as $dropdownItem){
+		if ($this->getProperty("role")==="nav") {
+			foreach ( $this->items as $dropdownItem ) {
 				$dropdownItem->runNav($js);
 			}
 		}
@@ -185,38 +180,39 @@ class HtmlDropdown extends HtmlButton {
 	 * @see \Ajax\bootstrap\html\BaseHtml::setTagName()
 	 */
 	public function setTagName($tagName) {
-		if($tagName=="button")
+		if ($tagName=="button")
 			$this->class="btn";
 		return parent::setTagName($tagName);
 	}
 
-	public function __toString(){
+	public function __toString() {
 		return $this->compile();
 	}
 
 	public function setBtnCaption($btnCaption) {
-		$this->btnCaption = $btnCaption;
+		$this->btnCaption=$btnCaption;
 		return $this;
 	}
 
-	public function getItemsCount(){
+	public function getItemsCount() {
 		return sizeof($this->items);
 	}
 
-	public function setAlignment($alignment){
-		if(is_int($alignment))
+	public function setAlignment($alignment) {
+		if (is_int($alignment))
 			$alignment="dropdown-menu-".CssRef::alignment()[$alignment];
-		return $this->addToMemberCtrl("class", $alignment,CssRef::alignment());
+		return $this->addToMemberCtrl($this->class, $alignment, CssRef::alignment());
 	}
 
-	public function dropup(){
+	public function dropup() {
 		$this->addToMember($this->mClass, "dropup");
 	}
+
 	public function getItems() {
 		return $this->items;
 	}
 
-	public function asButton($cssStyle="btn-primary"){
+	public function asButton($cssStyle="btn-primary") {
 		$this->setTagName("button");
 		$this->setBtnClass("btn dropdown-toggle");
 		$this->setStyle($cssStyle);
@@ -227,7 +223,7 @@ class HtmlDropdown extends HtmlButton {
 	 * @param string $jsCode
 	 * @return $this
 	 */
-	public function onShow($jsCode){
+	public function onShow($jsCode) {
 		return $this->addEvent("show.bs.dropdown", $jsCode);
 	}
 
@@ -236,7 +232,7 @@ class HtmlDropdown extends HtmlButton {
 	 * @param string $jsCode
 	 * @return $this
 	 */
-	public function onShown($jsCode){
+	public function onShown($jsCode) {
 		return $this->addEvent("shown.bs.dropdown", $jsCode);
 	}
 
@@ -245,7 +241,7 @@ class HtmlDropdown extends HtmlButton {
 	 * @param string $jsCode
 	 * @return $this
 	 */
-	public function onHide($jsCode){
+	public function onHide($jsCode) {
 		return $this->addEvent("hide.bs.dropdown", $jsCode);
 	}
 
@@ -254,8 +250,7 @@ class HtmlDropdown extends HtmlButton {
 	 * @param string $jsCode
 	 * @return $this
 	 */
-	public function onHidden($jsCode){
+	public function onHidden($jsCode) {
 		return $this->addEvent("hidden.bs.dropdown", $jsCode);
 	}
-
 }

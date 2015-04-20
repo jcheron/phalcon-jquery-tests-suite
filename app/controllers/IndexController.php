@@ -104,4 +104,10 @@ class IndexController extends ControllerBase
 		$btb3->getElement(3)->getItem(0)->onClick("$('#message').append('<p>'+$(event.target).text()+'</p>');");
 		$this->jquery->compile($this->view);
 	}
+
+	public function accordionAction(){
+		$accordion1=$this->jquery->bootstrap()->htmlAccordion("accordion1");
+		$accordion1->addPanel("Titre1", "Contenu <strong>gras</strong>");
+		$this->jquery->compile($this->view);
+	}
 }

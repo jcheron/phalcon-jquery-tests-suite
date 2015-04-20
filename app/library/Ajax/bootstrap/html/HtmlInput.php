@@ -1,16 +1,19 @@
 <?php
+
 namespace Ajax\bootstrap\html;
+
 use Ajax\bootstrap\html\base\HtmlSingleElement;
 use Ajax\JsUtils;
-include_once 'base/HtmlSingleElement.php';
+
 /**
  * Twitter Bootstrap simple Input component
  * @author jc
  * @version 1.001
  */
 class HtmlInput extends HtmlSingleElement {
+
 	public function __construct($identifier) {
-		parent::__construct($identifier,"input");
+		parent::__construct($identifier, "input");
 		$this->setProperty("name", $identifier);
 		$this->setProperty("class", "form-control");
 		$this->setProperty("role", "input");
@@ -18,29 +21,28 @@ class HtmlInput extends HtmlSingleElement {
 		$this->setProperty("type", "text");
 	}
 
-
-	public function setValue($value){
+	public function setValue($value) {
 		$this->setProperty("value", $value);
 	}
 
-	public function setInputType($value){
+	public function setInputType($value) {
 		$this->setProperty("type", $value);
 	}
 
-	public function setLabel($label,$before=true){
-		if ($before===true){
-			$this->wrap("<label for='".$this->identifier."'>".$label."</label>","");
-		}else{
-			$this->wrap("","<label for='".$this->identifier."'>&nbsp;".$label."</label>");
+	public function setLabel($label, $before=true) {
+		if ($before===true) {
+			$this->wrap("<label for='".$this->identifier."'>".$label."</label>", "");
+		} else {
+			$this->wrap("", "<label for='".$this->identifier."'>&nbsp;".$label."</label>");
 		}
 	}
 
-	public function onClick($jsCode){
+	public function onClick($jsCode) {
 		return $this->addEvent("click", $jsCode);
 	}
 
-
-	/* (non-PHPdoc)
+	/*
+	 * (non-PHPdoc)
 	 * @see \Ajax\bootstrap\html\base\HtmlSingleElement::run()
 	 */
 	public function run(JsUtils $js) {
@@ -49,11 +51,11 @@ class HtmlInput extends HtmlSingleElement {
 		return $this->_bsComponent;
 	}
 
-	public function onChange($jsCode){
+	public function onChange($jsCode) {
 		return $this->addEvent("change", $jsCode);
 	}
 
-	public function onKeypress($jsCode){
+	public function onKeypress($jsCode) {
 		return $this->addEvent("keypress", $jsCode);
 	}
 }

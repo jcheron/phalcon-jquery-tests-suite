@@ -1,5 +1,7 @@
 <?php
+
 namespace Ajax;
+
 use Ajax\common\BaseGui;
 use Ajax\bootstrap\components\Modal;
 use Ajax\bootstrap\components\Tooltip;
@@ -23,92 +25,100 @@ use Ajax\bootstrap\html\HtmlAccordion;
 use Ajax\bootstrap\html\HtmlCarousel;
 use Ajax\bootstrap\html\HtmlTabs;
 use Ajax\bootstrap\html\HtmlModal;
-include_once 'bootstrap/js/Draggable.php';
-include_once 'common/JsCode.php';
 
-class Bootstrap extends BaseGui{
+class Bootstrap extends BaseGui {
 
-	public function __construct($autoCompile = true) {
+	public function __construct($autoCompile=true) {
 		parent::__construct($autoCompile);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function generic($attachTo=NULL,$params=NULL){
+	public function generic($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new GenericComponent($this->js), $attachTo, $params);
 	}
+
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function modal($attachTo=NULL,$params=NULL){
+	public function modal($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Modal($this->js), $attachTo, $params);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function tooltip($attachTo=NULL,$params=NULL){
+	public function tooltip($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Tooltip($this->js), $attachTo, $params);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function popover($attachTo=NULL,$params=NULL){
+	public function popover($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Popover($this->js), $attachTo, $params);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function dropdown($attachTo=NULL,$params=NULL){
+	public function dropdown($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Dropdown($this->js), $attachTo, $params);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function splitbutton($attachTo=NULL,$params=NULL){
+	public function splitbutton($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Splitbutton($this->js), $attachTo, $params);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function tab($attachTo=NULL,$params=NULL){
+	public function tab($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Tab($this->js), $attachTo, $params);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function collapse($attachTo=NULL,$params=NULL){
+	public function collapse($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Collapse($this->js), $attachTo, $params);
 	}
 
 	/**
+	 *
 	 * @param string $attachTo
-	 * @param string $params
+	 * @param string|array $params
 	 * @return $this
 	 */
-	public function carousel($attachTo=NULL,$params=NULL){
+	public function carousel($attachTo=NULL, $params=NULL) {
 		return $this->addComponent(new Carousel($this->js), $attachTo, $params);
 	}
 
@@ -120,8 +130,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $onClick
 	 * @return HtmlButton
 	 */
-	public function htmlButton($identifier, $value="",$cssStyle=null,$onClick=null){
-		$button=new HtmlButton($identifier,$value,$cssStyle,$onClick);
+	public function htmlButton($identifier, $value="", $cssStyle=null, $onClick=null) {
+		$button=new HtmlButton($identifier, $value, $cssStyle, $onClick);
 		return $this->addHtmlComponent($button);
 	}
 
@@ -134,8 +144,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $onClick
 	 * @return HtmlGlyphButton
 	 */
-	public function htmlGlyphButton($identifier,$glyphIcon=0, $value="",$cssStyle=NULL,$onClick=NULL){
-		$button=new HtmlGlyphButton($identifier,$glyphIcon,$value,$cssStyle,$onClick);
+	public function htmlGlyphButton($identifier, $glyphIcon=0, $value="", $cssStyle=NULL, $onClick=NULL) {
+		$button=new HtmlGlyphButton($identifier, $glyphIcon, $value, $cssStyle, $onClick);
 		return $this->addHtmlComponent($button);
 	}
 
@@ -147,8 +157,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $size
 	 * @return HtmlButtongroups
 	 */
-	public function htmlButtongroups($identifier, $values=array(),$cssStyle=NULL,$size=NULL){
-		$buttongroup=new HtmlButtongroups($identifier,$values,$cssStyle,$size);
+	public function htmlButtongroups($identifier, $values=array(), $cssStyle=NULL, $size=NULL) {
+		$buttongroup=new HtmlButtongroups($identifier, $values, $cssStyle, $size);
 		return $this->addHtmlComponent($buttongroup);
 	}
 
@@ -160,8 +170,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $size
 	 * @return HtmlDropdown
 	 */
-	public function htmlDropdown($identifier, $value="",$items=array(),$cssStyle=NULL,$size=NULL){
-		$button=new HtmlDropdown($identifier,$value,$items,$cssStyle,$size);
+	public function htmlDropdown($identifier, $value="", $items=array(), $cssStyle=NULL, $size=NULL) {
+		$button=new HtmlDropdown($identifier, $value, $items, $cssStyle, $size);
 		return $this->addHtmlComponent($button);
 	}
 
@@ -173,8 +183,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $size
 	 * @return HtmlButtontoolbar
 	 */
-	public function htmlButtontoolbar($identifier,$elements=array(),$cssStyle=NULL,$size=NULL){
-		$button=new HtmlButtontoolbar($identifier,$elements,$cssStyle,$size);
+	public function htmlButtontoolbar($identifier, $elements=array(), $cssStyle=NULL, $size=NULL) {
+		$button=new HtmlButtontoolbar($identifier, $elements, $cssStyle, $size);
 		return $this->addHtmlComponent($button);
 	}
 
@@ -185,8 +195,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $brandHref
 	 * @return HtmlNavbar
 	 */
-	public function htmlNavbar($identifier,$brand="Brand",$brandHref="#"){
-		$nav=new HtmlNavbar($identifier,$brand,$brandHref);
+	public function htmlNavbar($identifier, $brand="Brand", $brandHref="#") {
+		$nav=new HtmlNavbar($identifier, $brand, $brandHref);
 		return $this->addHtmlComponent($nav);
 	}
 
@@ -198,8 +208,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $min
 	 * @return HtmlProgressbar
 	 */
-	public function htmlProgressbar($identifier, $style="info", $value=0,$max=100,$min=0){
-		$pb=new HtmlProgressbar($identifier, $style,$value,$max,$min);
+	public function htmlProgressbar($identifier, $style="info", $value=0, $max=100, $min=0) {
+		$pb=new HtmlProgressbar($identifier, $style, $value, $max, $min);
 		return $this->addHtmlComponent($pb);
 	}
 
@@ -211,8 +221,8 @@ class Bootstrap extends BaseGui{
 	 * @param string $footer the footer
 	 * @return HtmlPanel
 	 */
-	public function htmlPanel($identifier,$content=NULL,$header=NULL,$footer=NULL){
-		$panel=new HtmlPanel($identifier,$content,$header,$footer);
+	public function htmlPanel($identifier, $content=NULL, $header=NULL, $footer=NULL) {
+		$panel=new HtmlPanel($identifier, $content, $header, $footer);
 		return $this->addHtmlComponent($panel);
 	}
 
@@ -223,29 +233,29 @@ class Bootstrap extends BaseGui{
 	 * @param string $cssStyle
 	 * @return HtmlAlert
 	 */
-	public function htmlAlert($identifier,$message=NULL,$cssStyle="alert-warning"){
-		$alert=new HtmlAlert($identifier,$message,$cssStyle);
+	public function htmlAlert($identifier, $message=NULL, $cssStyle="alert-warning") {
+		$alert=new HtmlAlert($identifier, $message, $cssStyle);
 		return $this->addHtmlComponent($alert);
 	}
 
 	/**
 	 * Return a new Bootstrap Accordion
 	 * @param string $identifier
-	 * @param array $images [(src=>"",alt=>"",caption=>"",description=>""),...]
-	 * @return HtmlButton
+	 * @return HtmlAccordion
 	 */
-	public function htmlAccordion($identifier,$images=NULL){
-		$accordion=new HtmlAccordion($identifier,$images);
+	public function htmlAccordion($identifier) {
+		$accordion=new HtmlAccordion($identifier);
 		return $this->addHtmlComponent($accordion);
 	}
 
 	/**
 	 * Return a new Bootstrap Html Carousel
 	 * @param string $identifier
-	 * @return HtmlButton
+	 * @param array $images [(src=>"",alt=>"",caption=>"",description=>""),...]
+	 * @return HtmlCarousel
 	 */
-	public function htmlCarousel($identifier){
-		$caroussel=new HtmlCarousel($identifier);
+	public function htmlCarousel($identifier, $images=NULL) {
+		$caroussel=new HtmlCarousel($identifier, $images);
 		return $this->addHtmlComponent($caroussel);
 	}
 
@@ -254,7 +264,7 @@ class Bootstrap extends BaseGui{
 	 * @param string $identifier
 	 * @return HtmlTabs
 	 */
-	public function htmlTabs($identifier){
+	public function htmlTabs($identifier) {
 		$tabs=new HtmlTabs($identifier);
 		return $this->addHtmlComponent($tabs);
 	}
@@ -267,8 +277,8 @@ class Bootstrap extends BaseGui{
 	 * @param array $buttonCaptions
 	 * @return HtmlModal
 	 */
-	public function htmlModal($identifier,$title="",$content="",$buttonCaptions=array()){
-		$modal=new HtmlModal($identifier,$title,$content,$buttonCaptions);
+	public function htmlModal($identifier, $title="", $content="", $buttonCaptions=array()) {
+		$modal=new HtmlModal($identifier, $title, $content, $buttonCaptions);
 		return $this->addHtmlComponent($modal);
 	}
 }
