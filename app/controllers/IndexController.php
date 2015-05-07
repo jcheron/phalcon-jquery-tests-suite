@@ -110,4 +110,12 @@ class IndexController extends ControllerBase
 		$accordion1->addPanel("Titre1", "Contenu <strong>gras</strong>");
 		$this->jquery->compile($this->view);
 	}
+
+	public function helpdeskAction(){
+		$nav=$this->jquery->bootstrap()->htmlNavbar("mainNav","HelpDesk","#");
+		$nav->addElements(array("Créer un ticket","Tickets","Foire aux questions"));
+		$nav->cssInverse();
+		$nav->setFluid(false);
+		$this->jquery->compile($this->view);
+	}
 }

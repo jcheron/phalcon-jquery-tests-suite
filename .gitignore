@@ -49,3 +49,4 @@ Temporary Items
 .settings/org.eclipse.wst.jsdt.ui.superType.container
 .settings/org.eclipse.wst.jsdt.ui.superType.name
 app/cache
+app/views/index/helpdesk.volt

@@ -154,14 +154,9 @@ abstract class BaseHtml extends BaseWidget {
 
 	public function addToPropertyCtrl($name, $value, $typeCtrl) {
 		// if($this->ctrl($name, $value, $typeCtrl)===true){
-		if (@class_exists($typeCtrl, true))
-			$typeCtrl=$typeCtrl::getConstants();
-		if (is_array($typeCtrl)) {
-			$this->removeOldValues($this->properties [$name], $typeCtrl);
-		}
-		return $this->addToProperty($name, $value);
+		return $this->addToPropertyUnique($name, $value, $typeCtrl);
 		// }
-		return $this;
+		//return $this;
 	}
 
 	protected function removeOldValues(&$oldValue, $allValues) {
@@ -182,11 +177,9 @@ abstract class BaseHtml extends BaseWidget {
 
 	public function fromArray($array) {
 		foreach ( $this as $key => $value ) {
-			if (array_key_exists($key, $array)) {
-				if (!PhalconUtils::startsWith($key, "_")) {
+			if (array_key_exists($key, $array) && !PhalconUtils::startsWith($key, "_")) {
 					$setter="set".ucfirst($key);
 					$this->$setter($array [$key]);
-				}
 				unset($array [$key]);
 			}
 		}
