@@ -5,7 +5,7 @@ php:
   - 5.6
 addons:
   firefox: "41.0"
-sudo: false
+sudo: required
 before_script:
  - git clone -q https://github.com/phalcon/cphalcon.git
  - (cd cphalcon/ext; phpize && ./configure && make -B && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
