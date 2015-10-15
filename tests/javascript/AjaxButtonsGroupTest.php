@@ -109,7 +109,7 @@ class AjaxButtonsGroupTest extends AjaxUnitTest {
 		$search->click();
 		$message=$this->getElementById("message");
 		$this->assertContains("dd4", $message->getText());
-		$search=$this->getElementById("dd4-dropdown-item-1");
+		$search=$this->getElementById("a-dd4-dropdown-item-1");
 		$search->click();
 		$this->assertContains("Item1", $message->getText());
 	}
