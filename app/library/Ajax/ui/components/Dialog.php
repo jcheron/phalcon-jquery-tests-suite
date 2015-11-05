@@ -29,7 +29,7 @@ class Dialog extends SimpleComponent {
 			$jsonButtons []=$button->getParams();
 		}
 		$allParams ["buttons"]=$jsonButtons;
-		$this->jquery_code_for_compile []="$( '".$this->attachTo."' ).dialog(".$this->getParamsAsJSON($allParams).");";
+		$this->jquery_code_for_compile []="$( '" . $this->attachTo . "' ).dialog(" . $this->getParamsAsJSON($allParams) . ");";
 		$result=implode("", $this->jquery_code_for_compile);
 		$result=str_ireplace("\"%", "", $result);
 		$result=str_ireplace("%\"", "", $result);
@@ -59,7 +59,7 @@ class Dialog extends SimpleComponent {
 	}
 
 	private function insertBtn($insert, $position=NULL) {
-		if ($position!=NULL) {
+		if ($position != NULL) {
 			$this->buttons=array_splice($this->buttons, $position, 0, $insert);
 		} else {
 			$this->buttons []=$insert;

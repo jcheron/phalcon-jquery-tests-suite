@@ -269,7 +269,10 @@ class HtmlDropdown extends HtmlButton {
 		}
 	}
 
-	public function onItemClick($jsCode, $stopPropagation=false, $preventDefault=false) {
+	/* (non-PHPdoc)
+	 * @see \Ajax\bootstrap\html\base\BaseHtml::onClick()
+	 */
+	public function onClick($jsCode, $stopPropagation=false, $preventDefault=false) {
 		foreach ($this->items as $item){
 			$item->onClick($jsCode,$stopPropagation,$preventDefault);
 		}

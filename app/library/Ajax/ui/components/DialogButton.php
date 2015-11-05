@@ -16,7 +16,7 @@ class DialogButton extends BaseComponent {
 
 	private function addFunction($jsCode) {
 		if (!Text::startsWith($jsCode, "function"))
-			$jsCode="%function(){".$jsCode."}%";
+			$jsCode="%function(){" . $jsCode . "}%";
 		return $jsCode;
 	}
 
@@ -43,6 +43,6 @@ class DialogButton extends BaseComponent {
 	}
 
 	public static function submitButton(JsUtils $js, $url, $form, $responseElement, $caption="Okay") {
-		return new DialogButton($caption, $js->postForm($url, $form, $responseElement).";$( this ).dialog( 'close' );");
+		return new DialogButton($caption, $js->postForm($url, $form, $responseElement) . ";$( this ).dialog( 'close' );");
 	}
 }
