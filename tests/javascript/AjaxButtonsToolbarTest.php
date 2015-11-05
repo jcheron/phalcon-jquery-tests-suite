@@ -106,6 +106,8 @@ class AjaxButtonsToolbarTest extends AjaxUnitTest {
 	}
 
 	public function testAddElementDropdown(){
+		$search = $this->getElementById("dd4");
+		$search->click();
 		$message=$this->getElementById("message");
 		$search=$this->getElementById("dd4-dropdown-item-1");
 		$search->click();
