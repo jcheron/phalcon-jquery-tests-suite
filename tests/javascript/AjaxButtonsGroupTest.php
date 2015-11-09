@@ -105,10 +105,7 @@ class AjaxButtonsGroupTest extends AjaxUnitTest {
 	}
 
 	public function testAddElementDropdown(){
-		$search = $this->getElementById("dd4");
-		$search->click();
 		$message=$this->getElementById("message");
-		$this->assertContains("dd4", $message->getText());
 		$search=$this->getElementById("a-dd4-dropdown-item-1");
 		$search->click();
 		$this->assertContains("Item1", $message->getText());
