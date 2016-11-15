@@ -1,7 +1,6 @@
 <?php
 
 require_once dirname(__DIR__).'/EsmtpTransportTest.php';
-require_once dirname(dirname(dirname(dirname(__DIR__)))).'/fixtures/EsmtpTransportFixture.php';
 
 interface Swift_Transport_EsmtpHandlerMixin extends Swift_Transport_EsmtpHandler
 {
@@ -9,8 +8,7 @@ interface Swift_Transport_EsmtpHandlerMixin extends Swift_Transport_EsmtpHandler
     public function setPassword($pass);
 }
 
-class Swift_Transport_EsmtpTransport_ExtensionSupportTest
-    extends Swift_Transport_EsmtpTransportTest
+class Swift_Transport_EsmtpTransport_ExtensionSupportTest extends Swift_Transport_EsmtpTransportTest
 {
     public function testExtensionHandlersAreSortedAsNeeded()
     {
@@ -25,7 +23,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
         $ext1->shouldReceive('getPriorityOver')
              ->zeroOrMoreTimes()
              ->with('STARTTLS')
-             ->andReturn(0);
+             ->andReturn(1);
         $ext2->shouldReceive('getHandledKeyword')
              ->zeroOrMoreTimes()
              ->andReturn('STARTTLS');
@@ -142,7 +140,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
     {
         $buf = $this->_getBuffer();
         $dispatcher = $this->_createEventDispatcher();
-        $smtp = new EsmtpTransportFixture($buf, array(), $dispatcher);
+        $smtp = new Swift_Transport_EsmtpTransport($buf, array(), $dispatcher);
         $ext1 = $this->getMockery('Swift_Transport_EsmtpHandler')->shouldIgnoreMissing();
         $ext2 = $this->getMockery('Swift_Transport_EsmtpHandler')->shouldIgnoreMissing();
         $ext3 = $this->getMockery('Swift_Transport_EsmtpHandler')->shouldIgnoreMissing();
@@ -177,7 +175,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
             ->andReturn("250 SIZE=123456\r\n");
         $buf->shouldReceive('write')
             ->once()
-            ->with("MAIL FROM: <me@domain> FOO ZIP\r\n")
+            ->with("MAIL FROM:<me@domain> FOO ZIP\r\n")
             ->andReturn(2);
         $buf->shouldReceive('readLine')
             ->once()
@@ -185,7 +183,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
             ->andReturn("250 OK\r\n");
         $buf->shouldReceive('write')
             ->once()
-            ->with("RCPT TO: <foo@bar>\r\n")
+            ->with("RCPT TO:<foo@bar>\r\n")
             ->andReturn(3);
         $buf->shouldReceive('readLine')
             ->once()
@@ -228,7 +226,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
     {
         $buf = $this->_getBuffer();
         $dispatcher = $this->_createEventDispatcher();
-        $smtp = new EsmtpTransportFixture($buf, array(), $dispatcher);
+        $smtp = new Swift_Transport_EsmtpTransport($buf, array(), $dispatcher);
         $ext1 = $this->getMockery('Swift_Transport_EsmtpHandler')->shouldIgnoreMissing();
         $ext2 = $this->getMockery('Swift_Transport_EsmtpHandler')->shouldIgnoreMissing();
         $ext3 = $this->getMockery('Swift_Transport_EsmtpHandler')->shouldIgnoreMissing();
@@ -263,7 +261,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
             ->andReturn("250 SIZE=123456\r\n");
         $buf->shouldReceive('write')
             ->once()
-            ->with("MAIL FROM: <me@domain>\r\n")
+            ->with("MAIL FROM:<me@domain>\r\n")
             ->andReturn(2);
         $buf->shouldReceive('readLine')
             ->once()
@@ -271,7 +269,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
             ->andReturn("250 OK\r\n");
         $buf->shouldReceive('write')
             ->once()
-            ->with("RCPT TO: <foo@bar> FOO ZIP\r\n")
+            ->with("RCPT TO:<foo@bar> FOO ZIP\r\n")
             ->andReturn(3);
         $buf->shouldReceive('readLine')
             ->once()
@@ -414,7 +412,7 @@ class Swift_Transport_EsmtpTransport_ExtensionSupportTest
              ->andReturnUsing(function ($a, $b, $c, $d, &$e) {
                  $e = true;
 
-                 return "250 ok";
+                 return '250 ok';
              });
         $ext2->shouldReceive('getHandledKeyword')
              ->zeroOrMoreTimes()

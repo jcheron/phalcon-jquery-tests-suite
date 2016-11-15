@@ -11,8 +11,7 @@ before_script:
 # - git clone -q https://github.com/phalcon/cphalcon.git
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
 # - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
- - sudo chmod +x tests/install-phalcon.sh
- - bash ./tests/install-phalcon.sh
+ - vendor/bin/install-phalcon.sh
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
  - "sh -e /etc/init.d/xvfb start"
