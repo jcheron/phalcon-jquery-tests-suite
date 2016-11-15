@@ -14,6 +14,7 @@ before_install:
  - sudo apt-get install -y --force-yes php5-dev
  - sudo chmod +x vendor/bin/install-phalcon.sh
  - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
+ - sudo chmod +x vendor/phalcon/zephir/bin/zephir
  - vendor/bin/install-phalcon.sh
 before_script:
 # - git clone -q https://github.com/phalcon/cphalcon.git
