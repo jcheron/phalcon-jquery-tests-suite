@@ -13,6 +13,10 @@ addons:
 before_install:
 # - sudo apt-get install -y --force-yes php5-dev
 # - composer install --prefer-source --no-interaction
+ - git clone git@github.com:phalcon/zephir.git
+ - cd zephir
+ - sudo ./install -c
+ - cd ..
  - sudo chmod +x vendor/bin/install-phalcon.sh
  - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
  - sudo chmod +x vendor/phalcon/zephir/bin/zephir
