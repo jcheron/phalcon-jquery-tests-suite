@@ -8,7 +8,7 @@ addons:
 sudo: required
 before_script:
  - git clone -q https://github.com/phalcon/cphalcon.git
- - (cd cphalcon/build; phpize && ./configure && make -B && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
+ - (cd cphalcon/build; ./configure && make -B && sudo make install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
  - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
