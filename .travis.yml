@@ -12,7 +12,7 @@ before_script:
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
 # - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
  - sudo chmod +x tests/install-phalcon.sh
- - sudo bash ./tests/install-phalcon.sh
+ - bash ./tests/install-phalcon.sh
  - wget http://getcomposer.org/composer.phar
  - php composer.phar install
  - "sh -e /etc/init.d/xvfb start"
