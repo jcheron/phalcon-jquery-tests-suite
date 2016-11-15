@@ -22,3 +22,5 @@ before_script:
  - sleep 5
  - cd ..
 script: (cd tests; phpunit --configuration PHPunit.xml --debug)
+after_success:
+ - bash <(curl -s https://codecov.io/bash)
