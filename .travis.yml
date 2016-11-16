@@ -50,7 +50,7 @@ before_script:
  - cd cphalcon
  - bash tests/_ci/install_prereqs.sh
  - bash tests/_ci/install_zephir.sh
- - sudo chmod +x build_linux.sh
+# - sudo chmod +x build_linux.sh
  - '( zephir fullclean && zephir generate $ZEND_BACKEND )'
  - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -DZEPHIR_RELEASE=1"; phpize &> /dev/null && ./configure --silent --enable-phalcon &> /dev/null && make --silent -j4 &> /dev/null && make --silent install && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)
  - ulimit -c unlimited || true
