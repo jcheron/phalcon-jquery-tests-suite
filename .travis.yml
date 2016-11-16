@@ -21,6 +21,7 @@ addons:
   firefox: "41.0"
 before_install:
  - composer self-update
+ - composer require phalcon/zephir:dev-master
 # - composer update --prefer-source --no-interaction
 # - sudo apt-get install -y --force-yes php5-dev
 # - sudo curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash

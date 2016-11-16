@@ -4,8 +4,8 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "bddce2fec4306f3f0f9fd5186e1e3e2b",
-    "content-hash": "b565da0c906ae4344aca0e5fde7f9b8e",
+    "hash": "966ad4979e14aff36b6eb07cb1887113",
+    "content-hash": "24ea8b5da50ccdf04ad56c4aee442464",
     "packages": [
         {
             "name": "doctrine/instantiator",
@@ -109,68 +109,6 @@
                 "phalcon"
             ],
             "time": "2015-05-06 18:08:48"
-        },
-        {
-            "name": "phalcon/zephir",
-            "version": "0.9.4",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/phalcon/zephir.git",
-                "reference": "b45622ba768eb5ff14835a59d3d0ee4ec5f7f820"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/phalcon/zephir/zipball/b45622ba768eb5ff14835a59d3d0ee4ec5f7f820",
-                "reference": "b45622ba768eb5ff14835a59d3d0ee4ec5f7f820",
-                "shasum": ""
-            },
-            "require": {
-                "ext-ctype": "*",
-                "ext-hash": "*",
-                "ext-json": "*",
-                "php": ">=5.4"
-            },
-            "require-dev": {
-                "ext-gmp": "*",
-                "ext-pdo": "*",
-                "ext-pdo_sqlite": "*",
-                "phpunit/phpunit": "3.7.*",
-                "squizlabs/php_codesniffer": "~2.6"
-            },
-            "bin": [
-                "bin/zephir"
-            ],
-            "type": "library",
-            "extra": {
-                "branch-alias": {
-                    "dev-master": "1.0-dev"
-                }
-            },
-            "autoload": {
-                "psr-4": {
-                    "Zephir\\": "Library"
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "MIT"
-            ],
-            "authors": [
-                {
-                    "name": "Zephir Team",
-                    "homepage": "http://zephir-lang.com/"
-                },
-                {
-                    "name": "Contributors",
-                    "homepage": "https://github.com/phalcon/zephir/graphs/contributors"
-                }
-            ],
-            "description": "Zephir is a compiled high level language aimed to the creation of C-extensions for PHP",
-            "homepage": "http://zephir-lang.com/",
-            "keywords": [
-                "extension"
-            ],
-            "time": "2016-08-08 03:10:47"
         },
         {
             "name": "phpdocumentor/reflection-common",
@@ -576,16 +514,16 @@
         },
         {
             "name": "phpunit/php-token-stream",
-            "version": "1.4.8",
+            "version": "1.4.9",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/php-token-stream.git",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da"
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
-                "reference": "3144ae21711fb6cac0b1ab4cbe63b75ce3d4e8da",
+                "url": "https://api.github.com/repos/sebastianbergmann/php-token-stream/zipball/3b402f65a4cc90abf6e1104e388b896ce209631b",
+                "reference": "3b402f65a4cc90abf6e1104e388b896ce209631b",
                 "shasum": ""
             },
             "require": {
@@ -621,7 +559,7 @@
             "keywords": [
                 "tokenizer"
             ],
-            "time": "2015-09-15 10:49:45"
+            "time": "2016-11-15 14:06:22"
         },
         {
             "name": "phpunit/phpunit",
@@ -1317,6 +1255,68 @@
                 "webdriver"
             ],
             "time": "2015-06-09 17:09:16"
+        },
+        {
+            "name": "phalcon/zephir",
+            "version": "0.9.4",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/phalcon/zephir.git",
+                "reference": "b45622ba768eb5ff14835a59d3d0ee4ec5f7f820"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/phalcon/zephir/zipball/b45622ba768eb5ff14835a59d3d0ee4ec5f7f820",
+                "reference": "b45622ba768eb5ff14835a59d3d0ee4ec5f7f820",
+                "shasum": ""
+            },
+            "require": {
+                "ext-ctype": "*",
+                "ext-hash": "*",
+                "ext-json": "*",
+                "php": ">=5.4"
+            },
+            "require-dev": {
+                "ext-gmp": "*",
+                "ext-pdo": "*",
+                "ext-pdo_sqlite": "*",
+                "phpunit/phpunit": "3.7.*",
+                "squizlabs/php_codesniffer": "~2.6"
+            },
+            "bin": [
+                "bin/zephir"
+            ],
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "1.0-dev"
+                }
+            },
+            "autoload": {
+                "psr-4": {
+                    "Zephir\\": "Library"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Zephir Team",
+                    "homepage": "http://zephir-lang.com/"
+                },
+                {
+                    "name": "Contributors",
+                    "homepage": "https://github.com/phalcon/zephir/graphs/contributors"
+                }
+            ],
+            "description": "Zephir is a compiled high level language aimed to the creation of C-extensions for PHP",
+            "homepage": "http://zephir-lang.com/",
+            "keywords": [
+                "extension"
+            ],
+            "time": "2016-08-08 03:10:47"
         },
         {
             "name": "techpivot/phalcon-ci-installer",

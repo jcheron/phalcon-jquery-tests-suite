@@ -1,8 +1,7 @@
 {
     "require": {
         "phpunit/phpunit": "~4.5",
-        "phalcon/incubator": "~1.3",
-        "phalcon/zephir": "~0.9"
+        "phalcon/incubator": "~1.3"
     },
     "require-dev": {
     	 "facebook/webdriver": "dev-master",
