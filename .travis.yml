@@ -25,7 +25,7 @@ before_install:
 # - sudo chmod +x vendor/phalcon/zephir/bin/zephir
 # - vendor/bin/install-phalcon.sh 2.0.x
 before_script:
-# - git clone -q https://github.com/phalcon/cphalcon.git
+# - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
 # - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
 # - sudo chmod +x vendor/bin/install-phalcon.sh
