@@ -49,7 +49,7 @@ before_script:
 # - git submodule --quiet update --init --recursive
  - git clone -q https://github.com/phalcon/cphalcon.git
  - cd cphalcon
- - bash cphalcon/tests/_ci/install_zephir.sh
+ - bash tests/_ci/install_zephir.sh
  - '( zephir fullclean && zephir generate $ZEND_BACKEND )'
  - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -DZEPHIR_RELEASE=1"; phpize &> /dev/null && ./configure --silent --enable-phalcon &> /dev/null && make --silent -j4 &> /dev/null && make --silent install && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)
  - ulimit -c unlimited || true
