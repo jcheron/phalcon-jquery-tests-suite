@@ -21,7 +21,6 @@ addons:
   firefox: "41.0"
 before_install:
  - composer self-update
- - composer require phalcon/zephir:dev-master
 # - composer update --prefer-source --no-interaction
 # - sudo apt-get install -y --force-yes php5-dev
 # - sudo curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
@@ -37,24 +36,24 @@ before_install:
 # - sudo chmod +x build_linux.sh
 # - sudo ./install -c
 # - cd ..
-# - sudo chmod +x vendor/bin/install-phalcon.sh
+ - sudo chmod +x vendor/bin/install-phalcon.sh
 # - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
 # - sudo chmod +x vendor/phalcon/zephir/bin/zephir
-# - vendor/bin/install-phalcon.sh 2.0.x
+ - vendor/bin/install-phalcon.sh
 before_script:
 # - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
 # - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
 # - sudo chmod +x vendor/bin/install-phalcon.sh
 # - git submodule --quiet update --init --recursive
- - git clone -q https://github.com/phalcon/cphalcon.git
- - cd cphalcon
- - bash tests/_ci/install_prereqs.sh
- - bash tests/_ci/install_zephir.sh
+# - git clone -q https://github.com/phalcon/cphalcon.git
+# - cd cphalcon
+# - bash tests/_ci/install_prereqs.sh
+# - bash tests/_ci/install_zephir.sh
 # - sudo chmod +x build_linux.sh
- - '( zephir fullclean && zephir generate $ZEND_BACKEND )'
- - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -DZEPHIR_RELEASE=1"; phpize &> /dev/null && ./configure --silent --enable-phalcon &> /dev/null && make --silent -j4 &> /dev/null && make --silent install && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)
- - ulimit -c unlimited || true
+# - '( zephir fullclean && zephir generate $ZEND_BACKEND )'
+# - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -DZEPHIR_RELEASE=1"; phpize &> /dev/null && ./configure --silent --enable-phalcon &> /dev/null && make --silent -j4 &> /dev/null && make --silent install && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)
+# - ulimit -c unlimited || true
  - "sh -e /etc/init.d/xvfb start"
  - "export DISPLAY=:99.0"
  - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
