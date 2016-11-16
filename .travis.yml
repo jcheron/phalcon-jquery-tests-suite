@@ -11,6 +11,8 @@ addons:
   firefox: "41.0"
 #sudo: required
 before_install:
+ - wget http://getcomposer.org/composer.phar
+ - php composer.phar install
 # - sudo apt-get install -y --force-yes php5-dev
 # - composer install --prefer-source --no-interaction
 # - git clone -q https://github.com/phalcon/zephir.git
@@ -27,8 +29,6 @@ before_script:
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
 # - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
 # - sudo chmod +x vendor/bin/install-phalcon.sh
- - wget http://getcomposer.org/composer.phar
- - php composer.phar install
  - "sh -e /etc/init.d/xvfb start"
  - "export DISPLAY=:99.0"
  - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
