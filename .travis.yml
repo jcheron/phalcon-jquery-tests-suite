@@ -13,7 +13,14 @@ addons:
 before_install:
  - composer self-update
 # - composer update --prefer-source --no-interaction
- - sudo apt-get install -y --force-yes php5-dev
+# - sudo apt-get install -y --force-yes php5-dev
+ - curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
+ - 'if [[ "$TRAVIS_PHP_VERSION" = "5.*" ]]; then
+    sudo apt-get install -y --force-yes php5-phalcon
+    fi'
+ - 'if [[ "$TRAVIS_PHP_VERSION" = "7.*" ]]; then
+    sudo apt-get install -y --force-yes php7.0-phalcon
+    fi'
 # - composer install --prefer-source --no-interaction
 # - git clone -q https://github.com/phalcon/zephir.git
 # - cd zephir
@@ -29,10 +36,10 @@ before_script:
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
 # - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
 # - sudo chmod +x vendor/bin/install-phalcon.sh
- - git submodule --quiet update --init --recursive
- - git clone -q https://github.com/phalcon/cphalcon.git
- - (cd cphalcon/ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -Werror -Wno-error=uninitialized"; phpize && ./configure --silent --enable-phalcon && make --silent -j4 > /dev/null && sudo make --silent install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
- - ulimit -c unlimited || true
+# - git submodule --quiet update --init --recursive
+# - git clone -q https://github.com/phalcon/cphalcon.git
+# - (cd cphalcon/ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -Werror -Wno-error=uninitialized"; phpize && ./configure --silent --enable-phalcon && make --silent -j4 > /dev/null && sudo make --silent install && phpenv config-add ../unit-tests/ci/phalcon.ini &> /dev/null && cd ../..;)
+# - ulimit -c unlimited || true
  - "sh -e /etc/init.d/xvfb start"
  - "export DISPLAY=:99.0"
  - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
