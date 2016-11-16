@@ -18,6 +18,7 @@ before_install:
  - sudo curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
  - 'if [[ ${TRAVIS_PHP_VERSION:0:1} = "5" ]]; then
     sudo apt-get install -y --force-yes php5-phalcon ;
+    sudo php5enmod phalcon ;
     fi'
  - 'if [[ ${TRAVIS_PHP_VERSION:0:1} = "7" ]]; then
     sudo apt-get install -y --force-yes php7.0-phalcon ;
