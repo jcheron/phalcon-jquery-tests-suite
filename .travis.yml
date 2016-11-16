@@ -40,7 +40,7 @@ before_script:
 # - sudo chmod +x vendor/bin/install-phalcon.sh
 # - git submodule --quiet update --init --recursive
  - git clone -q https://github.com/phalcon/cphalcon.git
-  - bash cphalcon/tests/_ci/install_zephir.sh
+ - bash cphalcon/tests/_ci/install_zephir.sh
  - (cd cphalcon/ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -DZEPHIR_RELEASE=1"; phpize && ./configure --silent --enable-phalcon && make --silent -j4 > /dev/null && sudo make --silent install && phpenv config-add ../tests/_ci/phalcon.ini &> /dev/null && cd ../..;)
  - ulimit -c unlimited || true
  - "sh -e /etc/init.d/xvfb start"
