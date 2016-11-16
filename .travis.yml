@@ -12,23 +12,26 @@ addons:
 #sudo: required
 before_install:
  - composer self-update
- - composer update --prefer-source --no-interaction
-# - sudo apt-get install -y --force-yes php5-dev
+# - composer update --prefer-source --no-interaction
+ - sudo apt-get install -y --force-yes php5-dev
 # - composer install --prefer-source --no-interaction
 # - git clone -q https://github.com/phalcon/zephir.git
 # - cd zephir
 # - sudo chmod +x build_linux.sh
 # - sudo ./install -c
 # - cd ..
- - sudo chmod +x vendor/bin/install-phalcon.sh
- - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
- - sudo chmod +x vendor/phalcon/zephir/bin/zephir
- - vendor/bin/install-phalcon.sh 2.0.x
+# - sudo chmod +x vendor/bin/install-phalcon.sh
+# - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
+# - sudo chmod +x vendor/phalcon/zephir/bin/zephir
+# - vendor/bin/install-phalcon.sh 2.0.x
 before_script:
 # - git clone -q https://github.com/phalcon/cphalcon.git
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
 # - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
 # - sudo chmod +x vendor/bin/install-phalcon.sh
+ - git submodule --quiet update --init --recursive
+ - (cd ext; export CFLAGS="-g3 -O1 -std=gnu90 -Wall -Werror -Wno-error=uninitialized"; phpize && ./configure --silent --enable-phalcon && make --silent -j4 > /dev/null && sudo make --silent install && phpenv config-add ../unit-tests/ci/phalcon.ini)
+ - ulimit -c unlimited || true
  - "sh -e /etc/init.d/xvfb start"
  - "export DISPLAY=:99.0"
  - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
