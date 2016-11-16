@@ -37,7 +37,7 @@ before_install:
 # - sudo ./install -c
 # - cd ..
  - sudo chmod +x vendor/bin/install-phalcon.sh
-# - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
+ - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
 # - sudo chmod +x vendor/phalcon/zephir/bin/zephir
  - vendor/bin/install-phalcon.sh
 before_script:
