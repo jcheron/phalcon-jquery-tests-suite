@@ -15,10 +15,10 @@ before_install:
 # - composer update --prefer-source --no-interaction
 # - sudo apt-get install -y --force-yes php5-dev
  - curl -s https://packagecloud.io/install/repositories/phalcon/stable/script.deb.sh | sudo bash
- - 'if [[ "$TRAVIS_PHP_VERSION" = "5.*" ]]; then
+ - 'if [[ "$TRAVIS_PHP_VERSION" = "5.x" ]]; then
     sudo apt-get install -y --force-yes php5-phalcon ;
     fi'
- - 'if [[ "$TRAVIS_PHP_VERSION" = "7.*" ]]; then
+ - 'if [[ "$TRAVIS_PHP_VERSION" = "7.x" ]]; then
     sudo apt-get install -y --force-yes php7.0-phalcon ;
     fi'
 # - composer install --prefer-source --no-interaction
