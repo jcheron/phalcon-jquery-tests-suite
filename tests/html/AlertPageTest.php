@@ -2,8 +2,6 @@
 
 namespace Tests\html;
 
-use Phalcon\DiInterface;
-use Phalcon\Config;
 use Tests\PhalconUnitTest;
 /**
  * Class AlertPageTest
