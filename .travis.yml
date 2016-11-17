@@ -44,7 +44,6 @@ before_install:
 before_script:
 # - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git
 # - (cd cphalcon/build; sudo ./travis-install && cd ../..;)
-# - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
 # - sudo chmod +x vendor/bin/install-phalcon.sh
 # - git submodule --quiet update --init --recursive
 # - git clone -q https://github.com/phalcon/cphalcon.git
@@ -60,6 +59,7 @@ before_script:
  - "wget http://selenium-release.storage.googleapis.com/2.45/selenium-server-standalone-2.45.0.jar"
  - "java -jar selenium-server-standalone-2.45.0.jar > /dev/null &"
  - sleep 5
+ - (sudo mkdir app/cache && sudo chmod -R a+w app/cache)
  - cd public
  - php -m
  - php -S 127.0.0.1:8090 .htrouter.php &
