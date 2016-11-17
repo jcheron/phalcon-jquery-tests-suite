@@ -1,3 +1,7 @@
 codecov:
   archive:
-    uploads: false
+    uploads: true
+coverage:
+  precision: 2
+  round: down
+  range: "70...100"
