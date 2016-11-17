@@ -39,6 +39,7 @@ before_install:
  - sudo chmod +x vendor/bin/install-phalcon.sh
  - sudo chmod +x vendor/techpivot/phalcon-ci-installer/bin/install-phalcon.sh
  - sudo chmod +x vendor/phalcon/zephir/bin/zephir
+ - sudo chmod +x vendor/phalcon/zephir/parser/parser/build_linux.sh
  - vendor/bin/install-phalcon.sh
 before_script:
 # - git clone -q --depth=1 https://github.com/phalcon/cphalcon.git
